@@ -1,13 +1,13 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize profile information
+    initializeProfile();
+    
     // Initialize projects dynamically
     initializeProjects();
     
     // Initialize skills dynamically
     initializeSkills();
-    
-    // Initialize external image links
-    initializeImageLinks();
    
     // Initialize existing recommendations
     initializeRecommendations();
@@ -370,19 +370,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
         
-    // Function to set profile image to use external link instead of local file
-    function initializeImageLinks() {
-        // Define the profile image URL
-        const profileImageUrl = "https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png";
-        
-        // Update profile image
-        const profileImage = document.querySelector('.profile-image img');
-        if (profileImage) {
-            profileImage.src = profileImageUrl;
-            profileImage.alt = "Jane Doe Profile";
-        }
-        // Note: Skill icons are now handled by the initializeSkills function
-    }
+    // Function to set profile image to use external link instead of local file - REMOVED
+    // This functionality is now handled by profile.js
     
     // Function to initialize skills dynamically
     function initializeSkills() {
