@@ -1,5 +1,8 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', function() {
+        // Initialize external image links
+    initializeImageLinks();
+   
     // Initialize existing recommendations
     initializeRecommendations();
     
@@ -326,10 +329,52 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (targetSection) {
                 window.scrollTo({
-                    top: targetSection.offsetTop - 100,
+                    top: targetSection.offsetTop ,
                     behavior: 'smooth'
                 });
             }
         });
     });
+
+        
+    // Function to set all images to use external links instead of local files
+    function initializeImageLinks() {
+        // Define the external image URLs
+        const imageUrls = {
+            profile: "https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png",
+            html5: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+            javascript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+            react: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+            nodejs: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            css3: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+        };
+        
+        // Update profile image
+        const profileImage = document.querySelector('.profile-image img');
+        if (profileImage) {
+            profileImage.src = imageUrls.profile;
+            profileImage.alt = "Jane Doe Profile";
+        }
+        
+        // Update skill icons
+        const skillIcons = document.querySelectorAll('.skill-icon img');
+        skillIcons.forEach(icon => {
+            const alt = icon.alt.toLowerCase();
+            
+            if (alt.includes('html')) {
+                icon.src = imageUrls.html5;
+            } else if (alt.includes('javascript')) {
+                icon.src = imageUrls.javascript;
+            } else if (alt.includes('java')) {
+                icon.src = imageUrls.java;
+            } else if (alt.includes('react')) {
+                icon.src = imageUrls.react;
+            } else if (alt.includes('node')) {
+                icon.src = imageUrls.nodejs;
+            } else if (alt.includes('css')) {
+                icon.src = imageUrls.css3;
+            }
+        });
+    }
 });
