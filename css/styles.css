@@ -363,36 +363,47 @@ h2:hover:after {
     transform-origin: 70% 70%;
 }
 
+/* 
+ * Wave animation keyframes
+ * Creates a realistic hand waving motion for the emoji
+ * The hand rotates back and forth in decreasing angles to simulate natural wave
+ */
 @keyframes wave {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(14deg); }
-    40% { transform: rotate(-4deg); }
-    50% { transform: rotate(10deg); }
-    60% { transform: rotate(0deg); }
-    100% { transform: rotate(0deg); }
+    0% { transform: rotate(0deg); }     /* Starting position - hand straight */
+    10% { transform: rotate(14deg); }   /* Rotate right (maximum right tilt) */
+    20% { transform: rotate(-8deg); }   /* Swing back left (smaller angle) */
+    30% { transform: rotate(14deg); }   /* Swing right again (full angle) */
+    40% { transform: rotate(-4deg); }   /* Swing left again (even smaller) */
+    50% { transform: rotate(10deg); }   /* Last swing right (reduced angle) */
+    60% { transform: rotate(0deg); }    /* Return to center position */
+    100% { transform: rotate(0deg); }   /* Stay centered (pause before repeating) */
 }
 
 @keyframes fadeInLeft {
     from {
-        opacity: 0;
-        transform: translateX(20px);
+        opacity: 0;                     /* Start completely invisible */
+        transform: translateX(20px);    /* Start 20px to the right of final position */
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 1;                     /* End completely visible */
+        transform: translateX(0);       /* End at the intended position */
     }
 }
 
+/* 
+ * FadeInRight animation keyframes
+ * Elements slide in from the left side while fading in
+ * Creates a smooth entrance effect for the profile image
+ * Complements the fadeInLeft animation for a balanced appearance
+ */
 @keyframes fadeInRight {
     from {
-        opacity: 0;
-        transform: translateX(-20px);
+        opacity: 0;                     /* Start completely invisible */
+        transform: translateX(-20px);   /* Start 20px to the left of final position */
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 1;                     /* End completely visible */
+        transform: translateX(0);       /* End at the intended position */
     }
 }
 
