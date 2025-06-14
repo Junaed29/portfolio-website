@@ -1,103 +1,117 @@
-/* Global Styles */
+/* ========== CSS STYLES FOR PORTFOLIO WEBSITE ========== */
+
+/* ===== GLOBAL STYLES ===== */
+/* :root defines CSS variables that can be used throughout the document */
 :root {
     /* Primary color palette with improved accessibility */
-    --primary-color: #6a3de8; /* Adjusted purple for better readability */
-    --primary-hover: #5a2bd8;
-    --primary-light: #f4f1ff;
-    --text-color: #333333;
-    --background-color: #f9f9f9;
-    --card-bg: #ffffff;
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --primary-color: #6a3de8; /* Main purple color used throughout the site */
+    --primary-hover: #5a2bd8; /* Slightly darker purple for hover effects */
+    --primary-light: #f4f1ff; /* Very light purple for subtle backgrounds */
+    --text-color: #333333;    /* Dark gray for text - good contrast for readability */
+    --background-color: #f9f9f9; /* Light gray background for the page */
+    --card-bg: #ffffff;       /* White background for cards */
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow for cards */
     
-    /* Animation timing */
-    --transition-slow: 0.5s;
-    --transition-medium: 0.3s;
-    --transition-fast: 0.15s;
+    /* Animation timing variables - makes it easy to keep animations consistent */
+    --transition-slow: 0.5s;   /* Used for major animations */
+    --transition-medium: 0.3s; /* Used for most hover effects */
+    --transition-fast: 0.15s;  /* Used for quick, subtle animations */
 }
 
+/* Reset default browser styles and apply box-sizing border-box */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    margin: 0;         /* Remove default margins */
+    padding: 0;        /* Remove default padding */
+    box-sizing: border-box; /* Include padding and border in element width calculations */
+    font-family: 'Arial', sans-serif; /* Default font for all text */
 }
 
+/* Basic body styles */
 body {
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    line-height: 1.6;  /* Improves text readability with good line spacing */
+    color: var(--text-color); /* Text color using the variable defined above */
+    background-color: var(--background-color); /* Background color using the variable */
     overflow-x: hidden; /* Prevent horizontal scrolling for animations */
 }
 
-/* Header Styles */
+/* ===== HEADER STYLES ===== */
+/* The header contains the name, contact info, and navigation */
 header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 20px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--primary-color); /* Purple background */
+    color: white;      /* White text for good contrast */
+    padding: 20px 5%;  /* Padding: 20px top/bottom, 5% left/right */
+    display: flex;     /* Use flexbox for layout */
+    justify-content: space-between; /* Push name to left, nav to right */
+    align-items: center; /* Vertically center items */
+    position: relative; /* For positioning context */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow below header */
 }
 
-/* Requirement 1: Styled name on the top-left */
+/* Styled name on the top-left of the header */
 .header-left h1 {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-    animation: fadeInDown 0.6s ease-out;
+    font-size: 2.5rem;    /* Large text for name */
+    margin-bottom: 5px;   /* Space between name and contact info */
+    animation: fadeInDown 0.6s ease-out; /* Animation when page loads */
 }
 
+/* Container for email and phone */
 .contact-info {
-    display: flex;
-    flex-direction: column;
-    animation: fadeInUp 0.6s ease-out 0.2s both;
+    display: flex;           /* Use flexbox layout */
+    flex-direction: column;  /* Stack items vertically */
+    animation: fadeInUp 0.6s ease-out 0.2s both; /* Animation with delay */
 }
 
+/* Individual contact items */
 .contact-info p {
-    margin: 2px 0;
-    transition: transform var(--transition-fast);
+    margin: 2px 0;        /* Small vertical spacing */
+    transition: transform var(--transition-fast); /* Animation for hover effect */
 }
 
+/* Hover effect for contact items */
 .contact-info p:hover {
-    transform: translateX(3px);
+    transform: translateX(3px); /* Slide slightly right on hover */
 }
 
+/* Icons in the contact info */
 .contact-info i {
-    margin-right: 10px;
-    color: rgba(255, 255, 255, 0.9);
+    margin-right: 10px;   /* Space between icon and text */
+    color: rgba(255, 255, 255, 0.9); /* Slightly translucent white */
 }
 
-/* Requirement 2: Navigation Bar with hover effects */
+/* ===== NAVIGATION STYLES ===== */
+/* Navigation menu in the header */
 nav ul {
-    display: flex;
-    list-style-type: none;
-    animation: fadeIn 0.6s ease-out 0.3s both;
+    display: flex;        /* Horizontal layout for nav items */
+    list-style-type: none; /* Remove bullet points */
+    animation: fadeIn 0.6s ease-out 0.3s both; /* Animation with delay */
 }
 
+/* Individual navigation items */
 nav ul li {
-    margin-left: 30px;
+    margin-left: 30px;    /* Space between nav items */
 }
 
+/* Navigation links */
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    position: relative;
-    transition: all var(--transition-medium) ease;
-    padding-bottom: 3px;
+    color: white;         /* White text */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1rem;    /* Slightly larger than normal text */
+    font-weight: 500;     /* Medium bold */
+    position: relative;   /* For the underline effect */
+    transition: all var(--transition-medium) ease; /* Smooth transition for hover */
+    padding-bottom: 3px;  /* Space for the underline effect */
 }
 
-/* Navigation active state and hover effect */
+/* Navigation active state (current section) */
 nav ul li a.active {
-    color: white;
-    font-weight: 500;
+    color: white;         /* White text */
+    font-weight: 500;     /* Medium bold */
 }
 
+/* Underline effect for active navigation link */
 nav ul li a.active:before {
-    visibility: visible;
-    width: 100%;
+    visibility: visible;  /* Make the underline visible */
+    width: 100%;          /* Full width underline */
 }
 
 /* Modern hover effect for navigation links */
@@ -204,6 +218,7 @@ h2:hover:after {
     }
 }
 
+/* ===== ABOUT ME SECTION STYLES ===== */
 /* Requirement 3: About Me Section */
 .about-section {
     margin-top: 20px;
@@ -287,6 +302,7 @@ h2:hover:after {
     }
 }
 
+/* ===== SKILLS SECTION STYLES ===== */
 /* Requirement 4: Skills Section */
 .skills-container {
     display: grid;
@@ -352,6 +368,7 @@ h2:hover:after {
     transition: color var(--transition-medium);
 }
 
+/* ===== PROJECTS SECTION STYLES ===== */
 /* Requirement 5: Projects Section */
 .project {
     background-color: var(--card-bg);
@@ -414,6 +431,7 @@ h2:hover:after {
     margin-top: 20px;
 }
 
+/* ===== RECOMMENDATIONS SECTION STYLES ===== */
 /* Requirement 6: Recommendations Section */
 .recommendations-container {
     display: grid;
@@ -514,6 +532,7 @@ h2:hover:after {
     }
 }
 
+/* ===== ADD NEW RECOMMENDATIONS FORM STYLES ===== */
 /* Requirement 7: Add new recommendations form */
 .add-recommendation {
     background-color: var(--card-bg);
@@ -635,6 +654,7 @@ h2:hover:after {
     }
 }
 
+/* ===== BACK TO TOP BUTTON STYLES ===== */
 /* Requirement 8: Back to top button (Home icon) */
 .back-to-top {
     position: fixed;
@@ -669,6 +689,7 @@ h2:hover:after {
     box-shadow: 0 6px 20px rgba(106, 61, 232, 0.4);
 }
 
+/* ===== MODAL STYLES ===== */
 /* Modal for recommendation confirmation (Requirement 9) */
 .modal {
     display: none;
@@ -754,6 +775,7 @@ h2:hover:after {
     margin-top: 20px;
 }
 
+/* ===== RESPONSIVE DESIGN STYLES ===== */
 /* Responsive Design */
 @media (max-width: 992px) {
     .skills-container {

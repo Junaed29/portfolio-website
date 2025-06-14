@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic metadata for character encoding and responsive layout -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Theme color for mobile devices (will color the browser UI) -->
     <meta name="theme-color" content="#6a3de8">
-    <title>Portfolio - Jane Doe</title>
-    <!-- Link to CSS file -->
+    <!-- Page title - this will be updated by profile.js -->
+    <title>Portfolio</title> <!-- Will be dynamically updated by JavaScript -->
+    <!-- Link to CSS file - this contains all the styling rules -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome for icons (loaded from CDN - Content Delivery Network) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header Section with Name and Contact Info -->
+    <!-- Header Section - Fixed at the top with name and navigation -->
     <header>
+        <!-- Left side of header with name and contact info -->
         <div class="header-left">
             <!-- Requirement 1: Styled name appears on the top-left of the page -->
-            <!-- Name and contact info will be set by JavaScript from profile.js -->
+            <!-- Name will be set by JavaScript from profile.js -->
             <h1></h1>
+            <!-- Contact info will be set by JavaScript from profile.js -->
             <div class="contact-info">
-                <p><i class="fas fa-envelope"></i></p>
-                <p><i class="fas fa-phone"></i></p>
+                <p><i class="fas fa-envelope"></i></p> <!-- Email with icon -->
+                <p><i class="fas fa-phone"></i></p> <!-- Phone with icon -->
             </div>
         </div>
         
         <!-- Requirement 2: Navigation bar with 4 options -->
+        <!-- Navigation links - each points to a section below using ID links -->
         <nav>
             <ul>
                 <li><a href="#about" class="nav-link">About Me</a></li>
@@ -34,55 +40,68 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content - Contains all section content -->
     <main>
         <!-- Requirement 3: About Me Section -->
+        <!-- Section with ID "about" - navigation links point here -->
         <section id="about" class="about-section">
             <div class="profile-container">
+                <!-- Profile image container - image will be set by profile.js -->
                 <div class="profile-image">
-                    <!-- Image will be set by JavaScript from profile.js -->
-                    <img src="" alt="">
+                    <img src="" alt=""> <!-- Image source will be set by JavaScript -->
                 </div>
+                <!-- Profile text content - will be set by profile.js -->
                 <div class="profile-content">
-                    <!-- Content will be set by JavaScript from profile.js -->
-                    <h2><span class="wave-emoji">👋</span></h2>
-                    <p></p>
+                    <h2><span class="wave-emoji">👋</span></h2> <!-- Greeting with wave emoji -->
+                    <p></p> <!-- Description will be set by JavaScript -->
                 </div>
             </div>
         </section>
 
         <!-- Requirement 4: Skills Section with logo and text -->
+        <!-- Section with ID "skills" - navigation links point here -->
         <section id="skills" class="skills-section">
             <h2>Skills</h2>
+            <!-- Skills container - will be filled by skills.js -->
             <div class="skills-container">
-                <!-- Skills will be loaded dynamically by JavaScript -->
+                <!-- Skills will be loaded dynamically by JavaScript from skills.js -->
+                <!-- Each skill will be a card with icon, name and experience level -->
             </div>
         </section>
 
         <!-- Requirement 5: Projects Section -->
+        <!-- Section with ID "projects" - navigation links point here -->
         <section id="projects" class="projects-section">
             <h2>Projects</h2>
-            <!-- Projects will be loaded dynamically by JavaScript -->
+            <!-- Projects will be loaded dynamically by JavaScript from projects.js -->
+            <!-- Each project will show title and description -->
         </section>
 
         <!-- Requirement 6: Recommendations Section -->
+        <!-- Section with ID "recommendations" - navigation links point here -->
         <section id="recommendations" class="recommendations-section">
             <h2>Recommendations</h2>
             
+            <!-- Container for recommendation cards -->
             <div class="recommendations-container">
-                <!-- Recommendations will be loaded dynamically by JavaScript -->
+                <!-- Recommendations will be loaded dynamically by JavaScript from recommendations.js -->
+                <!-- Each recommendation will be a card with quote and name -->
             </div>
             
             <!-- Requirement 7: Add new recommendations to existing list -->
+            <!-- Form to add new recommendations -->
             <div class="add-recommendation">
                 <h3>Leave a Recommendation</h3>
                 <form id="recommendationForm">
+                    <!-- Name input field (optional) -->
                     <div class="form-group">
                         <input type="text" id="name" placeholder="Name (Optional)">
                     </div>
+                    <!-- Message input field (required) -->
                     <div class="form-group">
                         <textarea id="message" placeholder="Message" required></textarea>
                     </div>
+                    <!-- Submit button -->
                     <button type="submit" class="btn-submit">Submit</button>
                 </form>
             </div>
@@ -90,12 +109,30 @@
     </main>
 
     <!-- Requirement 8: Home icon appears as specified -->
+    <!-- Back to top button - fixed position, appears when scrolled down -->
     <a href="#" class="back-to-top">
         <i class="fas fa-arrow-circle-up"></i>
     </a>
 
-    <!-- JavaScript files -->
+    <!-- JavaScript modules - loaded in specific order -->
+    <!-- Each file has a specific purpose, keeping code organized -->
+    
+    <!-- Profile Module: Handles all user profile information -->
     <script src="js/profile.js"></script>
+    
+    <!-- Skills Module: Manages the skills section -->
+    <script src="js/skills.js"></script>
+    
+    <!-- Projects Module: Manages the projects section -->
+    <script src="js/projects.js"></script>
+    
+    <!-- Recommendations Module: Manages the recommendations section and form -->
+    <script src="js/recommendations.js"></script>
+    
+    <!-- Animations Module: Handles all animations and UI interactions -->
+    <script src="js/animations.js"></script>
+    
+    <!-- Main Script: Orchestrates all the modules -->
     <script src="js/script.js"></script>
 </body>
 </html>
