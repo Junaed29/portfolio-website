@@ -1,7 +1,18 @@
 /* ========== CSS STYLES FOR PORTFOLIO WEBSITE ========== */
+/* 
+ * CSS (Cascading Style Sheets) controls how HTML elements look on the webpage.
+ * This file defines all visual aspects of the portfolio website including:
+ * - Colors and layout
+ * - Animations and transitions
+ * - Responsive design for different devices
+ */
 
 /* ===== GLOBAL STYLES ===== */
-/* :root defines CSS variables that can be used throughout the document */
+/* 
+ * CSS variables let us define values once and reuse them throughout the file.
+ * This makes it easy to change the entire color scheme by updating just one value.
+ * We define them in :root which makes them available everywhere.
+ */
 :root {
     /* Primary color palette with improved accessibility */
     --primary-color: #6a3de8; /* Main purple color used throughout the site */
@@ -18,842 +29,875 @@
     --transition-fast: 0.15s;  /* Used for quick, subtle animations */
 }
 
-/* Reset default browser styles and apply box-sizing border-box */
+/* 
+ * CSS Reset - Starting with a clean slate
+ * This removes default browser styling so we can apply our own consistently.
+ * '*' is a universal selector that targets ALL elements.
+ */
 * {
-    margin: 0;         /* Remove default margins */
-    padding: 0;        /* Remove default padding */
-    box-sizing: border-box; /* Include padding and border in element width calculations */
-    font-family: 'Arial', sans-serif; /* Default font for all text */
+    margin: 0;         /* Remove default margins (space outside elements) */
+    padding: 0;        /* Remove default padding (space inside elements) */
+    box-sizing: border-box; /* Makes width include padding and borders, not add to it */
+    font-family: 'Arial', sans-serif; /* Sets default font for all text */
 }
 
-/* Basic body styles */
+/* 
+ * Basic styling for the entire body (main container of the page)
+ * These styles apply to everything inside the <body> tag.
+ */
 body {
-    line-height: 1.6;  /* Improves text readability with good line spacing */
-    color: var(--text-color); /* Text color using the variable defined above */
-    background-color: var(--background-color); /* Background color using the variable */
-    overflow-x: hidden; /* Prevent horizontal scrolling for animations */
+    line-height: 1.6;  /* Sets line spacing for better readability (1.6 times normal) */
+    color: var(--text-color); /* Sets text color using our variable */
+    background-color: var(--background-color); /* Sets background color using our variable */
+    overflow-x: hidden; /* Prevents horizontal scrolling which can break animations */
 }
 
 /* ===== HEADER STYLES ===== */
-/* The header contains the name, contact info, and navigation */
+/* 
+ * The header is the top section of the website with name and navigation.
+ * It's fixed to the top and contains the person's name and menu links.
+ */
 header {
-    background-color: var(--primary-color); /* Purple background */
-    color: white;      /* White text for good contrast */
-    padding: 20px 5%;  /* Padding: 20px top/bottom, 5% left/right */
-    display: flex;     /* Use flexbox for layout */
-    justify-content: space-between; /* Push name to left, nav to right */
-    align-items: center; /* Vertically center items */
-    position: relative; /* For positioning context */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow below header */
+    background-color: var(--primary-color); /* Purple header background */
+    color: white;      /* White text for good contrast against the purple */
+    padding: 20px 5%;  /* Inner spacing: 20px top/bottom, 5% of viewport width left/right */
+    display: flex;     /* Uses flexbox layout for positioning children */
+    justify-content: space-between; /* Pushes elements apart (name to left, nav to right) */
+    align-items: center; /* Centers items vertically */
+    position: relative; /* Sets positioning context for absolutely positioned children */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow below header for depth */
 }
 
-/* Styled name on the top-left of the header */
+/* 
+ * Styling for the name in the header
+ * This targets the heading inside the header-left div
+ */
 .header-left h1 {
-    font-size: 2.5rem;    /* Large text for name */
-    margin-bottom: 5px;   /* Space between name and contact info */
-    animation: fadeInDown 0.6s ease-out; /* Animation when page loads */
+    font-size: 2.5rem;    /* Large text for the name (2.5 times the base font size) */
+    margin-bottom: 5px;   /* Small space between the name and contact info below */
+    animation: fadeInDown 0.6s ease-out; /* Animation that slides the name in from above */
 }
 
-/* Container for email and phone */
+/* 
+ * Container for contact information (email and phone)
+ * The flex layout stacks these items vertically
+ */
 .contact-info {
-    display: flex;           /* Use flexbox layout */
-    flex-direction: column;  /* Stack items vertically */
-    animation: fadeInUp 0.6s ease-out 0.2s both; /* Animation with delay */
+    display: flex;           /* Uses flexbox layout */
+    flex-direction: column;  /* Stacks child elements vertically */
+    animation: fadeInUp 0.6s ease-out 0.2s both; /* Animation with 0.2s delay */
 }
 
-/* Individual contact items */
+/* 
+ * Individual contact items (email, phone)
+ * Each contact item is a paragraph element
+ */
 .contact-info p {
-    margin: 2px 0;        /* Small vertical spacing */
-    transition: transform var(--transition-fast); /* Animation for hover effect */
+    margin: 2px 0;        /* Small vertical spacing between contact items */
+    transition: transform var(--transition-fast); /* Smooth animation for hover effect */
 }
 
-/* Hover effect for contact items */
+/* 
+ * Hover effect for contact items - creates subtle animation when user hovers
+ * This makes the website feel more interactive
+ */
 .contact-info p:hover {
-    transform: translateX(3px); /* Slide slightly right on hover */
+    transform: translateX(3px); /* Slides the text 3px to the right on hover */
 }
 
-/* Icons in the contact info */
+/* 
+ * Icons in the contact info (email icon, phone icon)
+ * These are Font Awesome icons (<i> elements)
+ */
 .contact-info i {
-    margin-right: 10px;   /* Space between icon and text */
+    margin-right: 10px;   /* Space between the icon and the text */
     color: rgba(255, 255, 255, 0.9); /* Slightly translucent white */
 }
 
 /* ===== NAVIGATION STYLES ===== */
-/* Navigation menu in the header */
+/* 
+ * Navigation menu in the header
+ * This creates the horizontal menu with links to each section.
+ */
 nav ul {
-    display: flex;        /* Horizontal layout for nav items */
-    list-style-type: none; /* Remove bullet points */
-    animation: fadeIn 0.6s ease-out 0.3s both; /* Animation with delay */
+    display: flex;        /* Creates horizontal layout for navigation items */
+    list-style-type: none; /* Removes bullet points from the list */
+    animation: fadeIn 0.6s ease-out 0.3s both; /* Animation with 0.3s delay */
 }
 
-/* Individual navigation items */
+/* 
+ * Individual navigation list items
+ * Each <li> contains one navigation link
+ */
 nav ul li {
-    margin-left: 30px;    /* Space between nav items */
+    margin-left: 30px;    /* Space between each navigation item */
 }
 
-/* Navigation links */
+/* 
+ * Navigation links (<a> tags)
+ * These are the actual clickable links in the navigation
+ */
 nav ul li a {
-    color: white;         /* White text */
-    text-decoration: none; /* Remove underline */
-    font-size: 1.1rem;    /* Slightly larger than normal text */
-    font-weight: 500;     /* Medium bold */
-    position: relative;   /* For the underline effect */
-    transition: all var(--transition-medium) ease; /* Smooth transition for hover */
-    padding-bottom: 3px;  /* Space for the underline effect */
+    color: white;         /* White text for contrast against the purple background */
+    text-decoration: none; /* Removes the default underline from links */
+    font-size: 1.1rem;    /* Slightly larger than normal text (1.1 times the base font size) */
+    font-weight: 500;     /* Medium bold text (500 is semi-bold, 400 is normal, 700 is bold) */
+    position: relative;   /* Needed for positioning the underline effect */
+    transition: all var(--transition-medium) ease; /* Smooth transition for hover effects */
+    padding-bottom: 3px;  /* Space below the text for the underline effect */
 }
 
-/* Navigation active state (current section) */
+/* 
+ * Navigation active state - applies when the link points to the current section
+ * This highlights which section the user is currently viewing
+ */
 nav ul li a.active {
-    color: white;         /* White text */
-    font-weight: 500;     /* Medium bold */
+    color: white;         /* Ensures text is white (may be redundant but ensures consistency) */
+    font-weight: 500;     /* Maintains medium bold weight */
 }
 
-/* Underline effect for active navigation link */
+/* 
+ * Underline effect for the active navigation link
+ * This creates a line under the active menu item using a pseudo-element
+ */
 nav ul li a.active:before {
-    visibility: visible;  /* Make the underline visible */
+    visibility: visible;  /* Makes the underline visible (normally hidden) */
     width: 100%;          /* Full width underline */
 }
 
-/* Modern hover effect for navigation links */
+/* 
+ * Modern hover effect for navigation links using pseudo-elements
+ * :before creates a virtual element we can style before the actual content
+ */
 nav ul li a:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    visibility: hidden;
-    transition: all var(--transition-medium) ease;
+    content: "";          /* Required for pseudo-elements even if empty */
+    position: absolute;   /* Positions relative to the parent link */
+    width: 0;             /* Starts with zero width (invisible) */
+    height: 2px;          /* Height of the underline */
+    bottom: 0;            /* Positioned at the bottom of the link */
+    left: 0;              /* Starting from the left */
+    background-color: white; /* White underline */
+    visibility: hidden;   /* Initially hidden until hover */
+    transition: all var(--transition-medium) ease; /* Smooth animation */
 }
 
+/* 
+ * Hover state for navigation links
+ * Keeps text white when hovering
+ */
 nav ul li a:hover {
     color: white;
 }
 
+/* 
+ * The underline animation effect when hovering over links
+ * On hover, make the underline visible and expand to full width
+ */
 nav ul li a:hover:before {
-    visibility: visible;
-    width: 100%;
+    visibility: visible;  /* Show the underline */
+    width: 100%;          /* Animate to full width */
 }
 
-/* Main Content Styles */
+/* 
+ * Main content container styles
+ * This wraps all the sections of the website
+ */
 main {
-    padding: 30px 5%;
+    padding: 30px 5%;    /* Space inside the main container: 30px top/bottom, 5% left/right */
 }
 
+/* 
+ * Base styles for all sections
+ * These apply to About Me, Skills, Projects, and Recommendations sections
+ */
 section {
-    margin-bottom: 60px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease-out forwards;
-    animation-play-state: paused;
+    margin-bottom: 60px; /* Space between sections */
+    opacity: 0;          /* Start invisible for animation */
+    transform: translateY(20px); /* Start slightly below final position */
+    animation: fadeInUp 0.8s ease-out forwards; /* Animation that will show the section */
+    animation-play-state: paused; /* Animation starts paused */
 }
 
+/* 
+ * When a section becomes visible in the viewport
+ * The 'visible' class is added by JavaScript when scrolling
+ */
 section.visible {
-    animation-play-state: running;
+    animation-play-state: running; /* Start the animation when section is visible */
 }
 
+/* 
+ * Section headings (About Me, Skills, Projects, Recommendations)
+ * These are the main titles for each section
+ */
 h2 {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 30px;
-    position: relative;
+    font-size: 3rem;     /* Large text for section titles (3 times base font size) */
+    color: var(--primary-color); /* Purple color for headings */
+    margin-bottom: 30px; /* Space below the heading */
+    position: relative;  /* For the decorative line below */
 }
 
+/* 
+ * Decorative line below section headings
+ * Creates a small underline that expands on hover
+ */
 h2:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 40px;
-    height: 4px;
-    background-color: var(--primary-color);
-    transition: width var(--transition-medium) ease;
+    content: '';         /* Required for pseudo-elements */
+    position: absolute;  /* Positioned relative to the heading */
+    left: 0;             /* Starts from the left */
+    bottom: -8px;        /* 8px below the heading */
+    width: 40px;         /* Initial width of the line */
+    height: 4px;         /* Line thickness */
+    background-color: var(--primary-color); /* Purple line */
+    transition: width var(--transition-medium) ease; /* Animation for width change */
 }
 
+/* 
+ * Hover effect for the decorative line
+ * When hovering over a heading, the line expands
+ */
 h2:hover:after {
-    width: 100px;
+    width: 100px;        /* Expanded width of the line on hover */
 }
 
-/* Animation Keyframes */
+/* ===== ANIMATION KEYFRAMES ===== */
+/* 
+ * CSS animations define how elements transition from one state to another
+ * @keyframes defines the animation steps from start (0%) to end (100%)
+ * These animations are used throughout the website for various elements
+ */
+
+/* 
+ * Fade In animation - makes elements appear by changing opacity
+ * Used for navigation menu and other elements
+ */
 @keyframes fadeIn {
     from {
-        opacity: 0;
+        opacity: 0;      /* Start completely transparent */
     }
     to {
-        opacity: 1;
+        opacity: 1;      /* End completely visible */
     }
 }
 
+/* 
+ * Fade In Down animation - elements fade in while moving down
+ * Used for the name in the header
+ */
 @keyframes fadeInDown {
     from {
-        opacity: 0;
-        transform: translateY(-20px);
+        opacity: 0;           /* Start completely transparent */
+        transform: translateY(-20px); /* Start 20px above final position */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;           /* End completely visible */
+        transform: translateY(0); /* End at final position */
     }
 }
 
+/* 
+ * Fade In Up animation - elements fade in while moving up
+ * Used for sections when they come into view while scrolling
+ */
 @keyframes fadeInUp {
     from {
-        opacity: 0;
-        transform: translateY(20px);
+        opacity: 0;           /* Start completely transparent */
+        transform: translateY(20px); /* Start 20px below final position */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;           /* End completely visible */
+        transform: translateY(0); /* End at final position */
     }
 }
 
+/* 
+ * Scale In animation - elements fade in while growing in size
+ * This creates a subtle "pop" effect
+ */
 @keyframes scaleIn {
     from {
-        opacity: 0;
-        transform: scale(0.9);
+        opacity: 0;      /* Start completely transparent */
+        transform: scale(0.9); /* Start at 90% of final size */
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+        opacity: 1;      /* End completely visible */
+        transform: scale(1); /* End at full size (100%) */
     }
 }
 
 /* ===== ABOUT ME SECTION STYLES ===== */
-/* Requirement 3: About Me Section */
+/* 
+ * The About Me section includes profile image and personal description
+ * This is the first main section users see after the header
+ */
 .about-section {
-    margin-top: 20px;
+    margin-top: 20px;   /* Space between the header and About section */
 }
 
+/* 
+ * Container for profile image and text
+ * Uses flexbox for side-by-side layout
+ */
 .profile-container {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+    display: flex;      /* Side-by-side layout */
+    align-items: center; /* Vertically centers the image and text */
+    gap: 40px;          /* Space between the image and text */
 }
 
+/* 
+ * Profile image container
+ * Controls the size and position of the profile picture
+ */
 .profile-image {
-    flex: 0 0 300px;
-    transform: translateX(-20px);
-    opacity: 0;
-    animation: fadeInRight 0.8s ease-out 0.2s forwards;
+    flex: 0 0 300px;    /* Fixed width of 300px, doesn't grow or shrink */
+    transform: translateX(-20px); /* Start 20px to the left for animation */
+    opacity: 0;         /* Start invisible */
+    animation: fadeInRight 0.8s ease-out 0.2s forwards; /* Animation with delay */
 }
 
+/* 
+ * Profile image styling
+ * Makes the image rounded and adds hover effects
+ */
 .profile-image img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: var(--card-shadow);
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    width: 100%;        /* Image fills the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: var(--card-shadow); /* Subtle shadow for depth */
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium); /* Smooth hover animation */
 }
 
+/* 
+ * Profile image hover effect
+ * Makes the image slightly larger and with stronger shadow when hovered
+ */
 .profile-image img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02); /* Grow to 102% of original size */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow */
 }
 
+/* 
+ * Profile text content container
+ * Contains the greeting and bio text
+ */
 .profile-content {
-    transform: translateX(20px);
-    opacity: 0;
-    animation: fadeInLeft 0.8s ease-out 0.4s forwards;
+    transform: translateX(20px); /* Start 20px to the right for animation */
+    opacity: 0;                 /* Start invisible */
+    animation: fadeInLeft 0.8s ease-out 0.4s forwards; /* Animation with delay */
 }
 
+/* 
+ * Profile section heading (Hi, I'm ...)
+ * Styles the greeting text above the bio
+ */
 .profile-content h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 3rem;     /* Large text for greeting */
+    margin-bottom: 20px; /* Space between greeting and bio */
+    display: flex;       /* For positioning the wave emoji */
+    align-items: center; /* Vertically centers the emoji with text */
+    gap: 10px;           /* Space between text and emoji */
 }
 
+/* 
+ * Wave emoji animation
+ * Makes the hand emoji wave back and forth
+ */
 .wave-emoji {
-    display: inline-block;
-    animation: wave 2s infinite;
-    transform-origin: 70% 70%;
+    display: inline-block;     /* Treats emoji like an image block */
+    animation: wave 2s infinite; /* Continuous waving animation */
+    transform-origin: 70% 70%; /* Sets the pivot point for rotation */
 }
 
+/* 
+ * Wave animation keyframes
+ * Defines how the hand emoji rotates to create waving effect
+ */
 @keyframes wave {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(14deg); }
-    40% { transform: rotate(-4deg); }
-    50% { transform: rotate(10deg); }
-    60% { transform: rotate(0deg); }
-    100% { transform: rotate(0deg); }
+    0% { transform: rotate(0deg); }    /* Start position */
+    10% { transform: rotate(14deg); }  /* Rotate right */
+    20% { transform: rotate(-8deg); }  /* Rotate left */
+    30% { transform: rotate(14deg); }  /* Rotate right again */
+    40% { transform: rotate(-4deg); }  /* Rotate left again */
+    50% { transform: rotate(10deg); }  /* Rotate right one more time */
+    60% { transform: rotate(0deg); }   /* Return to original position */
+    100% { transform: rotate(0deg); }  /* Stay in original position */
 }
 
+/* 
+ * Fade In Left animation
+ * Elements fade in while moving from right to left
+ * Used for profile content text
+ */
 @keyframes fadeInLeft {
     from {
-        opacity: 0;
-        transform: translateX(20px);
+        opacity: 0;            /* Start invisible */
+        transform: translateX(20px); /* Start 20px to the right */
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 1;            /* End fully visible */
+        transform: translateX(0); /* End in final position */
     }
 }
 
+/* 
+ * Fade In Right animation
+ * Elements fade in while moving from left to right
+ * Used for profile image
+ */
 @keyframes fadeInRight {
     from {
-        opacity: 0;
-        transform: translateX(-20px);
+        opacity: 0;            /* Start invisible */
+        transform: translateX(-20px); /* Start 20px to the left */
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 1;            /* End fully visible */
+        transform: translateX(0); /* End in final position */
     }
 }
 
 /* ===== SKILLS SECTION STYLES ===== */
-/* Requirement 4: Skills Section */
+/* 
+ * The Skills section displays programming skills with icons and experience levels
+ * Each skill is displayed in its own card with icon, name, and experience
+ */
+
+/* 
+ * Container for all skill cards
+ * Creates a grid layout with 3 columns on large screens
+ */
 .skills-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    display: grid;                     /* Uses CSS Grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+    gap: 30px;                         /* Space between skill cards */
 }
 
+/* 
+ * Individual skill card
+ * Each card contains an icon, skill name, and experience level
+ */
 .skill-card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 24px 20px;
-    text-align: center;
-    box-shadow: var(--card-shadow);
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+    background-color: var(--card-bg);  /* White background */
+    border-radius: 12px;               /* Rounded corners */
+    padding: 24px 20px;                /* Inner spacing */
+    text-align: center;                /* Center-aligns all content */
+    box-shadow: var(--card-shadow);    /* Subtle shadow for depth */
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium); /* Smooth hover animation */
+    position: relative;                /* For positioning the overlay effect */
+    overflow: hidden;                  /* Hides the overflow of the overlay */
+    z-index: 1;                        /* Stacking context for hover effect */
 }
 
+/* 
+ * Hover effect overlay for skill cards
+ * Creates a subtle gradient background that appears on hover
+ */
 .skill-card:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: linear-gradient(to bottom, rgba(106, 61, 232, 0.05), transparent);
-    transition: height var(--transition-medium);
-    z-index: -1;
+    content: '';                       /* Required for pseudo-elements */
+    position: absolute;                /* Position relative to the card */
+    top: 0;                            /* Align to top of card */
+    left: 0;                           /* Align to left of card */
+    width: 100%;                       /* Full width of card */
+    height: 0;                         /* Start with no height (invisible) */
+    background: linear-gradient(to bottom, rgba(106, 61, 232, 0.05), transparent); /* Subtle gradient */
+    transition: height var(--transition-medium); /* Animate height change */
+    z-index: -1;                       /* Position behind the content */
 }
 
+/* 
+ * Hover effect for skill cards
+ * Card lifts up and shadow becomes stronger
+ */
 .skill-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(106, 61, 232, 0.15);
+    transform: translateY(-8px);       /* Lift up by 8px */
+    box-shadow: 0 10px 30px rgba(106, 61, 232, 0.15); /* Stronger, colored shadow */
 }
 
+/* 
+ * Show the gradient overlay on hover
+ * The overlay animates from 0 to full height
+ */
 .skill-card:hover:before {
-    height: 100%;
+    height: 100%;                      /* Expand to full height of card */
 }
 
+/* 
+ * Container for skill icon
+ * Fixed height ensures consistent card sizing
+ */
 .skill-icon {
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
+    height: 80px;                      /* Fixed height for icon area */
+    display: flex;                     /* Flexbox for centering */
+    align-items: center;               /* Center vertically */
+    justify-content: center;           /* Center horizontally */
+    margin-bottom: 15px;               /* Space below the icon */
 }
 
+/* 
+ * Skill icon image
+ * Sets maximum size and enables hover animation
+ */
 .skill-icon img {
-    max-height: 70px;
-    max-width: 70px;
-    transition: transform var(--transition-medium);
+    max-height: 70px;                  /* Limit height of icons */
+    max-width: 70px;                   /* Limit width of icons */
+    transition: transform var(--transition-medium); /* Smooth hover animation */
 }
 
+/* 
+ * Hover animation for skill icons
+ * Makes icons slightly larger and rotated
+ */
 .skill-card:hover .skill-icon img {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1) rotate(5deg); /* Grow and rotate slightly */
 }
 
+/* 
+ * Skill name heading
+ * The name of the skill (e.g., "JavaScript")
+ */
 .skill-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    transition: color var(--transition-medium);
+    margin-bottom: 10px;               /* Space below the name */
+    font-size: 1.3rem;                 /* Larger than normal text */
+    color: var(--primary-color);       /* Purple text color */
+    transition: color var(--transition-medium); /* Smooth color transition */
 }
 
 /* ===== PROJECTS SECTION STYLES ===== */
-/* Requirement 5: Projects Section */
+/* 
+ * The Projects section displays portfolio projects with descriptions
+ * Each project is displayed in a card with title and details
+ */
+
+/* 
+ * Individual project card
+ * Contains project title and description
+ */
 .project {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 25px 30px;
-    margin-bottom: 25px;
-    box-shadow: var(--card-shadow);
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-    position: relative;
-    overflow: hidden;
+    background-color: var(--card-bg);  /* White background */
+    border-radius: 12px;               /* Rounded corners */
+    padding: 25px 30px;                /* Inner spacing */
+    margin-bottom: 25px;               /* Space between projects */
+    box-shadow: var(--card-shadow);    /* Subtle shadow */
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium); /* Smooth hover animation */
+    position: relative;                /* For positioning effects */
+    overflow: hidden;                  /* Hides overflow content */
 }
 
+/* 
+ * Hover effect for project cards
+ * Card slides slightly right and shadow becomes stronger
+ */
 .project:hover {
-    transform: translateX(5px);
-    box-shadow: 0 6px 25px rgba(106, 61, 232, 0.12);
+    transform: translateX(5px);        /* Slide 5px to the right */
+    box-shadow: 0 6px 25px rgba(106, 61, 232, 0.12); /* Stronger, colored shadow */
 }
 
+/* 
+ * Project title
+ * Each project's heading with hover effect
+ */
 .project h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    position: relative;
-    display: inline-block;
+    margin-bottom: 15px;               /* Space below the title */
+    font-size: 1.5rem;                 /* Large text for project title */
+    color: var(--primary-color);       /* Purple text */
+    position: relative;                /* For the underline effect */
+    display: inline-block;             /* So the underline matches text width */
 }
 
+/* 
+ * Underline effect for project titles
+ * Creates an expanding line under project titles on hover
+ */
 .project h3:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    transition: width var(--transition-medium) ease;
+    content: '';                       /* Required for pseudo-elements */
+    position: absolute;                /* Position relative to title */
+    left: 0;                           /* Start from left edge */
+    bottom: -5px;                      /* 5px below the title */
+    width: 0;                          /* Start with no width (invisible) */
+    height: 2px;                       /* Line thickness */
+    background-color: var(--primary-color); /* Purple line */
+    transition: width var(--transition-medium) ease; /* Animate width change */
 }
 
+/* 
+ * Show and expand the underline on hover
+ * The line grows from 0 to full width
+ */
 .project:hover h3:after {
-    width: 100%;
+    width: 100%;                       /* Expand to full width */
 }
 
+/* 
+ * Project description list
+ * Contains bullet points about the project
+ */
 .project ul {
-    padding-left: 20px;
+    padding-left: 20px;                /* Space for bullet points */
 }
 
+/* 
+ * Individual project description items
+ * Each bullet point in the project description
+ */
 .project ul li {
-    position: relative;
-    transition: transform var(--transition-medium);
+    position: relative;                /* For positioning animations */
+    transition: transform var(--transition-medium); /* Smooth hover animation */
 }
 
+/* 
+ * Hover effect for list items
+ * Items slide slightly to the right on hover
+ */
 .project:hover ul li {
-    transform: translateX(3px);
+    transform: translateX(3px);        /* Slide 3px to the right */
 }
 
+/* 
+ * Divider between projects
+ * Adds a subtle line between projects (except the last one)
+ */
 .project:not(:last-child):after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin-top: 20px;
+    content: "";                       /* Required for pseudo-elements */
+    display: block;                    /* Creates a block element */
+    width: 100%;                       /* Full width line */
+    height: 1px;                       /* Very thin line */
+    background-color: #e0e0e0;         /* Light gray color */
+    margin-top: 20px;                  /* Space above the divider */
 }
 
 /* ===== RECOMMENDATIONS SECTION STYLES ===== */
-/* Requirement 6: Recommendations Section */
+/* 
+ * The Recommendations section displays testimonials and a form to submit new ones
+ * It includes recommendation cards and a form for visitors to leave feedback
+ */
+
+/* 
+ * Container for recommendation cards
+ * Creates a grid layout with 3 columns on large screens
+ */
 .recommendations-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 40px;
+    display: grid;                     /* Uses CSS Grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+    gap: 30px;                         /* Space between recommendation cards */
+    margin-bottom: 40px;               /* Space before the form below */
 }
 
+/* 
+ * Individual recommendation card
+ * Contains a quote and the recommender's name
+ */
 .recommendation-card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 25px 20px;
-    box-shadow: var(--card-shadow);
-    position: relative;
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-    opacity: 0;
-    animation: staggerFadeIn 0.5s ease-out forwards;
+    background-color: var(--card-bg);  /* White background */
+    border-radius: 12px;               /* Rounded corners */
+    padding: 25px 20px;                /* Inner spacing */
+    box-shadow: var(--card-shadow);    /* Subtle shadow */
+    position: relative;                /* For positioning effects */
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium); /* Smooth hover animation */
+    opacity: 0;                        /* Start invisible for animation */
+    animation: staggerFadeIn 0.5s ease-out forwards; /* Fade-in animation */
 }
 
-/* Stagger animation for recommendation cards */
-.recommendation-card:nth-child(1) { animation-delay: 0.1s; }
-.recommendation-card:nth-child(2) { animation-delay: 0.2s; }
-.recommendation-card:nth-child(3) { animation-delay: 0.3s; }
-.recommendation-card:nth-child(4) { animation-delay: 0.4s; }
-.recommendation-card:nth-child(5) { animation-delay: 0.5s; }
+/* 
+ * Staggered animation delays for recommendation cards
+ * Makes cards appear one after another rather than all at once
+ */
+.recommendation-card:nth-child(1) { animation-delay: 0.1s; } /* First card */
+.recommendation-card:nth-child(2) { animation-delay: 0.2s; } /* Second card */
+.recommendation-card:nth-child(3) { animation-delay: 0.3s; } /* Third card */
+.recommendation-card:nth-child(4) { animation-delay: 0.4s; } /* Fourth card */
+.recommendation-card:nth-child(5) { animation-delay: 0.5s; } /* Fifth card */
 
+/* 
+ * Hover effect for recommendation cards
+ * Card lifts up slightly and gets a stronger shadow
+ */
 .recommendation-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px) scale(1.01); /* Lift up and grow slightly */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Stronger shadow */
 }
 
+/* 
+ * Recommendation quote styling
+ * The actual testimonial text
+ */
 .recommendation-card blockquote {
-    font-style: italic;
-    position: relative;
-    padding: 10px 15px;
-    color: var(--text-color);
-    line-height: 1.7;
+    font-style: italic;                /* Italic text for quotes */
+    position: relative;                /* For positioning quote marks */
+    padding: 10px 15px;                /* Space inside the quote */
+    color: var(--text-color);          /* Text color */
+    line-height: 1.7;                  /* Increased line spacing for readability */
 }
 
+/* 
+ * Quote marks styling (beginning and end)
+ * Adds decorative quotation marks before and after the text
+ */
 .recommendation-card blockquote:before,
 .recommendation-card blockquote:after {
-    content: '"';
-    font-size: 2.2rem;
-    color: var(--primary-color);
-    position: absolute;
-    opacity: 0.3;
-    transition: opacity var(--transition-medium), transform var(--transition-medium);
+    content: '"';                      /* Double quote character */
+    font-size: 2.2rem;                 /* Large quote marks */
+    color: var(--primary-color);       /* Purple color */
+    position: absolute;                /* Position absolutely within the blockquote */
+    opacity: 0.3;                      /* Mostly transparent */
+    transition: opacity var(--transition-medium), transform var(--transition-medium); /* Smooth hover animation */
 }
 
-.recommendation-card:hover blockquote:before,
-.recommendation-card:hover blockquote:after {
-    opacity: 0.6;
-}
-
-.recommendation-card blockquote:before {
-    top: -10px;
-    left: 0;
-}
-
-.recommendation-card blockquote:after {
-    content: '"';
-    bottom: -20px;
-    right: 0;
-}
-
-.recommendation-card:hover blockquote:before {
-    transform: translateY(-2px);
-}
-
-.recommendation-card:hover blockquote:after {
-    transform: translateY(2px);
-}
-
-/* Style for recommender names */
-.recommender-name {
-    display: block;
-    font-style: normal;
-    font-weight: bold;
-    text-align: right;
-    margin-top: 10px;
-    color: var(--primary-color);
-    font-size: 0.9em;
-    transition: transform var(--transition-medium);
-}
-
-.recommendation-card:hover .recommender-name {
-    transform: translateX(-3px);
-}
-
-@keyframes staggerFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== ADD NEW RECOMMENDATIONS FORM STYLES ===== */
-/* Requirement 7: Add new recommendations form */
-.add-recommendation {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 35px;
-    box-shadow: var(--card-shadow);
-    margin-top: 20px;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.5s forwards;
-    position: relative;
-    overflow: hidden;
-}
-
-.add-recommendation:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--primary-color), #9b6dff);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition-medium);
-}
-
-.add-recommendation:hover:before {
-    transform: scaleX(1);
-}
-
-.add-recommendation h3 {
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 1.8rem;
-    color: var(--primary-color);
-}
-
-.form-group {
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all var(--transition-medium);
-    background-color: rgba(249, 249, 249, 0.5);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(106, 61, 232, 0.1);
-    background-color: white;
-}
-
-.form-group textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-.btn-submit {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 35px;
-    font-size: 16px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: all var(--transition-medium);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-submit:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(106, 61, 232, 0.3);
-}
-
-.btn-submit:active {
-    transform: translateY(-1px);
-}
-
-.btn-submit:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.5);
-    opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%);
-    transform-origin: 50% 50%;
-}
-
-.btn-submit:focus:after {
-    animation: ripple 1s ease-out;
-}
-
-@keyframes ripple {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(40, 40);
-        opacity: 0;
-    }
-}
-
-/* ===== BACK TO TOP BUTTON STYLES ===== */
-/* Requirement 8: Back to top button (Home icon) */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: var(--primary-color);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    font-size: 24px;
-    opacity: 0;
-    transition: all var(--transition-medium);
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(106, 61, 232, 0.3);
-    transform: translateY(20px);
-}
-
-.back-to-top.visible {
-    opacity: 0.9;
-    transform: translateY(0);
-}
-
-.back-to-top:hover {
-    opacity: 1;
-    background-color: var(--primary-hover);
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(106, 61, 232, 0.4);
-}
-
-/* ===== MODAL STYLES ===== */
-/* Modal for recommendation confirmation (Requirement 9) */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1001;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity var(--transition-medium);
-}
-
-.modal.visible {
-    opacity: 1;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 35px;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transform: scale(0.8);
-    opacity: 0;
-    transition: all var(--transition-medium);
-}
-
-.modal.visible .modal-content {
-    transform: scale(1);
-    opacity: 1;
-}
-
-.modal-content h3 {
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    font-size: 1.8rem;
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #888;
-    transition: color var(--transition-medium), transform var(--transition-medium);
-}
-
+/* 
+ * Hover effect for close button
+ * Darkens and rotates on hover
+ */
 .close-modal:hover {
-    color: #333;
-    transform: rotate(90deg);
+    color: #333;                       /* Darker gray */
+    transform: rotate(90deg);          /* Rotate 90 degrees */
 }
 
+/* 
+ * Modal buttons (Yes, No, OK)
+ * Action buttons at the bottom of modals
+ */
 .modal-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 25px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: all var(--transition-medium);
+    background-color: var(--primary-color); /* Purple background */
+    color: white;                      /* White text */
+    border: none;                      /* No border */
+    border-radius: 8px;                /* Rounded corners */
+    padding: 12px 25px;                /* Comfortable padding */
+    font-size: 16px;                   /* Readable text size */
+    cursor: pointer;                   /* Hand cursor on hover */
+    margin-top: 20px;                  /* Space above buttons */
+    transition: all var(--transition-medium); /* Smooth hover animation */
 }
 
+/* 
+ * Hover effect for modal buttons
+ * Buttons lift up and get a shadow
+ */
 .modal-button:hover {
-    background-color: var(--primary-hover);
-    box-shadow: 0 5px 15px rgba(106, 61, 232, 0.2);
-    transform: translateY(-2px);
+    background-color: var(--primary-hover); /* Darker purple */
+    box-shadow: 0 5px 15px rgba(106, 61, 232, 0.2); /* Subtle shadow */
+    transform: translateY(-2px);       /* Lift up 2px */
 }
 
+/* 
+ * Container for multiple modal buttons
+ * Used when there are Yes/No buttons side by side
+ */
 .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    display: flex;                     /* Flexbox for horizontal layout */
+    justify-content: center;           /* Center buttons horizontally */
+    gap: 15px;                         /* Space between buttons */
+    margin-top: 20px;                  /* Space above button container */
 }
 
 /* ===== RESPONSIVE DESIGN STYLES ===== */
-/* Responsive Design */
+/* 
+ * Responsive Design rules
+ * These rules adjust the layout for different screen sizes
+ * This ensures the website looks good on desktops, tablets, and phones
+ */
+
+/* 
+ * Medium screens (tablets, smaller laptops)
+ * Applied when the viewport width is 992px or less
+ */
 @media (max-width: 992px) {
+    /* Change skills grid to 2 columns instead of 3 */
     .skills-container {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Change recommendations grid to 2 columns instead of 3 */
     .recommendations-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* 
+ * Small screens (phones in landscape, small tablets)
+ * Applied when the viewport width is 768px or less
+ */
 @media (max-width: 768px) {
+    /* Stack header elements vertically */
     header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 5%;
+        flex-direction: column;        /* Change from row to column layout */
+        text-align: center;            /* Center-align text */
+        padding: 15px 5%;              /* Reduce padding */
     }
     
+    /* Center the navigation and add space above */
     nav ul {
-        margin-top: 15px;
-        justify-content: center;
+        margin-top: 15px;              /* Space above navigation */
+        justify-content: center;        /* Center navigation links */
     }
     
+    /* Adjust spacing between navigation items */
     nav ul li {
-        margin: 0 10px;
+        margin: 0 10px;                /* Equal margin on both sides */
     }
     
+    /* Stack profile elements vertically */
     .profile-container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column;        /* Change from row to column layout */
+        text-align: center;            /* Center-align text */
     }
     
+    /* Center and resize profile image */
     .profile-image {
-        flex: 0 0 200px;
-        margin: 0 auto;
+        flex: 0 0 200px;               /* Smaller fixed size */
+        margin: 0 auto;                /* Center horizontally */
     }
     
+    /* Center the decorative line under headings */
     h2:after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 50%;                     /* Center horizontally */
+        transform: translateX(-50%);   /* Perfect centering */
     }
     
+    /* Center-align section headings */
     h2 {
-        text-align: center;
+        text-align: center;            /* Center-align text */
     }
     
+    /* Change skills grid to single column */
     .skills-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;    /* Single column layout */
     }
     
+    /* Change recommendations grid to single column */
     .recommendations-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;    /* Single column layout */
     }
     
+    /* Adjust project hover effect for touch screens */
     .project:hover {
-        transform: translateY(-5px);
-        transform: translateX(0);
+        transform: translateY(-5px);   /* Move up instead of right */
+        transform: translateX(0);      /* Cancel the left-right movement */
     }
 }
 
+/* 
+ * Extra small screens (phones in portrait)
+ * Applied when the viewport width is 576px or less
+ */
 @media (max-width: 576px) {
+    /* Stack navigation links vertically */
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column;        /* Change from row to column layout */
+        align-items: center;           /* Center horizontally */
     }
     
+    /* Add space between nav items when stacked */
     nav ul li {
-        margin: 5px 0;
+        margin: 5px 0;                 /* Vertical spacing, no horizontal */
     }
     
+    /* Reduce profile spacing */
     .profile-container {
-        gap: 20px;
+        gap: 20px;                     /* Less space between elements */
     }
     
+    /* Make back-to-top button smaller */
     .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
+        bottom: 20px;                  /* Position closer to bottom */
+        right: 20px;                   /* Position closer to right */
+        width: 45px;                   /* Smaller width */
+        height: 45px;                  /* Smaller height */
     }
 }
