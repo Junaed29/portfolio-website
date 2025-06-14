@@ -39,7 +39,7 @@ The website is fully responsive and works well on desktop, tablet, and mobile de
 ## Adding New Content
 
 ### Projects
-To add new projects, edit the `index.html` file and add a new project div within the projects section.
+To add new projects, edit the `projectsData` array in the `script.js` file by adding a new project object with `title` and `description` properties.
 
 ### Skills
-To add new skills, add a new skill card within the skills container in the `index.html` file.
+To add new skills, edit the `skillsData` array in the `script.js` file by adding a new skill object with `name`, `experience`, and `iconUrl` properties.

@@ -1,5 +1,8 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize projects dynamically
+    initializeProjects();
+    
     // Initialize skills dynamically
     initializeSkills();
     
@@ -428,6 +431,53 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Add to the container
                 skillsContainer.appendChild(skillCard);
+            });
+        }
+    }
+    
+    // Function to initialize projects dynamically
+    function initializeProjects() {
+        // Projects data
+        const projectsData = [
+            {
+                title: "Chatbot",
+                description: "Developed a secure website integrated with chatbot for an automobile client using HTML, CSS, JavaScript and IBM Watson Assistant"
+            },
+            {
+                title: "Sentiment Analyzer",
+                description: "Developed and deployed a sentiment analyzer for the box reviews section of an eCommerce platform using IBM NLU"
+            },
+            {
+                title: "Fashion Website",
+                description: "Created a styled multi-page website for a new player in the fashion industry and integrated it with a shopping cart, using stripe for payment gateway"
+            }
+        ];
+        
+        // Get the projects section
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection) {
+            // Create and append each project
+            projectsData.forEach(project => {
+                // Create project container
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'project';
+                
+                // Create project title
+                const projectTitle = document.createElement('h3');
+                projectTitle.textContent = project.title;
+                
+                // Create description list
+                const descriptionList = document.createElement('ul');
+                const descriptionItem = document.createElement('li');
+                descriptionItem.textContent = project.description;
+                
+                // Assemble the project
+                descriptionList.appendChild(descriptionItem);
+                projectDiv.appendChild(projectTitle);
+                projectDiv.appendChild(descriptionList);
+                
+                // Add to projects section
+                projectsSection.appendChild(projectDiv);
             });
         }
     }
