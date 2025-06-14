@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const recommendationForm = document.getElementById('recommendationForm');
     
     // Requirement 7: Add new recommendations
-    // Requirement 9: Display confirmation dialog after submission
+    // Requirement 9: First show confirmation dialog, then display thank you message
     if (recommendationForm) {
         recommendationForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
@@ -14,34 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const messageInput = document.getElementById('message');
             
             if (messageInput.value.trim() !== '') {
-                // Create new recommendation card
-                const newRecommendation = document.createElement('div');
-                newRecommendation.className = 'recommendation-card';
-                
-                // Create blockquote with the submitted message
-                const blockquote = document.createElement('blockquote');
-                blockquote.textContent = `"${messageInput.value}"`;
-                
-                // If name was provided, add it to the blockquote
-                if (nameInput.value.trim() !== '') {
-                    const nameSpan = document.createElement('span');
-                    nameSpan.className = 'recommender-name';
-                    nameSpan.textContent = ` - ${nameInput.value}`;
-                    blockquote.appendChild(nameSpan);
-                }
-                
-                // Append the blockquote to the new recommendation card
-                newRecommendation.appendChild(blockquote);
-                
-                // Get recommendations container and append new recommendation
-                const recommendationsContainer = document.querySelector('.recommendations-container');
-                recommendationsContainer.appendChild(newRecommendation);
-                
-                // Reset form
-                recommendationForm.reset();
-                
-                // Show confirmation modal
-                showConfirmationModal();
+                // First show confirmation dialog
+                showConfirmationDialog(nameInput.value, messageInput.value);
             }
         });
     }
@@ -76,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Function to show confirmation modal after submitting recommendation
-    function showConfirmationModal() {
+    // Function to show confirmation dialog before adding recommendation
+    function showConfirmationDialog(name, message) {
         // Create modal elements if they don't exist
         let modal = document.getElementById('confirmationModal');
         
@@ -99,6 +73,130 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             // Add confirmation message
+            const modalTitle = document.createElement('h3');
+            modalTitle.textContent = 'Confirm Submission';
+            
+            const modalText = document.createElement('p');
+            modalText.textContent = 'Are you sure you want to submit this recommendation?';
+            
+            // Add button container for Yes/No buttons
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+            buttonContainer.style.display = 'flex';
+            buttonContainer.style.justifyContent = 'center';
+            buttonContainer.style.gap = '10px';
+            buttonContainer.style.marginTop = '15px';
+            
+            // Add Yes button
+            const yesButton = document.createElement('button');
+            yesButton.className = 'modal-button';
+            yesButton.textContent = 'Yes';
+            yesButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+                addRecommendation(name, message);
+            });
+            
+            // Add No button
+            const noButton = document.createElement('button');
+            noButton.className = 'modal-button';
+            noButton.style.backgroundColor = '#888';
+            noButton.textContent = 'No';
+            noButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Append all elements to modal
+            buttonContainer.appendChild(yesButton);
+            buttonContainer.appendChild(noButton);
+            modalContent.appendChild(closeBtn);
+            modalContent.appendChild(modalTitle);
+            modalContent.appendChild(modalText);
+            modalContent.appendChild(buttonContainer);
+            modal.appendChild(modalContent);
+            
+            // Add modal to the document
+            document.body.appendChild(modal);
+        } else {
+            // Update modal content if it already exists
+            const modalTitle = modal.querySelector('h3');
+            modalTitle.textContent = 'Confirm Submission';
+            
+            const modalText = modal.querySelector('p');
+            modalText.textContent = 'Are you sure you want to submit this recommendation?';
+            
+            // Find or create button container
+            let buttonContainer = modal.querySelector('.button-container');
+            if (!buttonContainer) {
+                buttonContainer = document.createElement('div');
+                buttonContainer.className = 'button-container';
+                buttonContainer.style.display = 'flex';
+                buttonContainer.style.justifyContent = 'center';
+                buttonContainer.style.gap = '10px';
+                buttonContainer.style.marginTop = '15px';
+                
+                const modalContent = modal.querySelector('.modal-content');
+                modalContent.appendChild(buttonContainer);
+            }
+            
+            // Clear existing buttons
+            buttonContainer.innerHTML = '';
+            
+            // Add Yes button
+            const yesButton = document.createElement('button');
+            yesButton.className = 'modal-button';
+            yesButton.textContent = 'Yes';
+            yesButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+                addRecommendation(name, message);
+            });
+            
+            // Add No button
+            const noButton = document.createElement('button');
+            noButton.className = 'modal-button';
+            noButton.style.backgroundColor = '#888';
+            noButton.textContent = 'No';
+            noButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            buttonContainer.appendChild(yesButton);
+            buttonContainer.appendChild(noButton);
+        }
+        
+        // Display the modal
+        modal.style.display = 'flex';
+        
+        // Close modal when clicking outside the content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+    
+    // Function to show thank you message after submitting recommendation
+    function showThankYouModal() {
+        // Create modal elements if they don't exist
+        let modal = document.getElementById('thankYouModal');
+        
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'thankYouModal';
+            modal.className = 'modal';
+            
+            // Create modal content
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content';
+            
+            // Add close button
+            const closeBtn = document.createElement('span');
+            closeBtn.className = 'close-modal';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Add thank you message
             const modalTitle = document.createElement('h3');
             modalTitle.textContent = 'Thank You!';
             
@@ -133,6 +231,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 modal.style.display = 'none';
             }
         });
+    }
+    
+    // Function to add recommendation after confirmation
+    function addRecommendation(name, message) {
+        // Create new recommendation card
+        const newRecommendation = document.createElement('div');
+        newRecommendation.className = 'recommendation-card';
+        
+        // Create blockquote with the submitted message
+        const blockquote = document.createElement('blockquote');
+        blockquote.textContent = `"${message}"`;
+        
+        // If name was provided, add it to the blockquote
+        if (name.trim() !== '') {
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'recommender-name';
+            nameSpan.textContent = ` - ${name}`;
+            blockquote.appendChild(nameSpan);
+        }
+        
+        // Append the blockquote to the new recommendation card
+        newRecommendation.appendChild(blockquote);
+        
+        // Get recommendations container and append new recommendation
+        const recommendationsContainer = document.querySelector('.recommendations-container');
+        recommendationsContainer.appendChild(newRecommendation);
+        
+        // Reset form
+        document.getElementById('recommendationForm').reset();
+        
+        // Show thank you modal
+        showThankYouModal();
     }
     
     // Smooth scroll for navigation links
