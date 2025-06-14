@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Jane Doe</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section with Name and Contact Info -->
+    <header>
+        <div class="header-left">
+            <!-- Requirement 1: Styled name appears on the top-left of the page -->
+            <h1>Jane Doe</h1>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> jdoe@jeemail.com</p>
+                <p><i class="fas fa-phone"></i> +13456764598</p>
+            </div>
+        </div>
+        
+        <!-- Requirement 2: Navigation bar with 4 options -->
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Requirement 3: About Me Section -->
+        <section id="about" class="about-section">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <!-- Replace with actual profile image path -->
+                    <img src="images/profile.png" alt="Jane Doe Profile">
+                </div>
+                <div class="profile-content">
+                    <h2>Hi, I'm Jane Doe! <span class="wave-emoji">👋</span></h2>
+                    <p>I am a full stack developer with 2 years of experience in both application and presentation layers. I have worked on applications and microservices deployed on IBM Cloud. I am an avid user of IBM Watson Services and have worked on Watson Assistant, NLU, Sentiment analyzer to name a few.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirement 4: Skills Section with logo and text -->
+        <section id="skills" class="skills-section">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="images/html5.png" alt="HTML5 Icon">
+                    </div>
+                    <h3>HTML</h3>
+                    <p>2 years experience</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="images/javascript.png" alt="JavaScript Icon">
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>1.5 years experience</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="images/java.png" alt="Java Icon">
+                    </div>
+                    <h3>Java</h3>
+                    <p>.5 years experience</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="images/react.png" alt="React Icon">
+                    </div>
+                    <h3>React</h3>
+                    <p>1 year experience</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="images/nodejs.png" alt="Node.js Icon">
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>1 year experience</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="images/css3.png" alt="CSS3 Icon">
+                    </div>
+                    <h3>CSS</h3>
+                    <p>2 years experience</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirement 5: Projects Section -->
+        <section id="projects" class="projects-section">
+            <h2>Projects</h2>
+            
+            <div class="project">
+                <h3>Chatbot</h3>
+                <ul>
+                    <li>Developed a secure website integrated with chatbot for an automobile client using HTML, CSS, JavaScript and IBM Watson Assistant</li>
+                </ul>
+            </div>
+            
+            <div class="project">
+                <h3>Sentiment Analyzer</h3>
+                <ul>
+                    <li>Developed and deployed a sentiment analyzer for the box reviews section of an eCommerce platform using IBM NLU</li>
+                </ul>
+            </div>
+            
+            <div class="project">
+                <h3>Fashion Website</h3>
+                <ul>
+                    <li>Created a styled multi-page website for a new player in the fashion industry and integrated it with a shopping cart, using stripe for payment gateway</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Requirement 6: Recommendations Section -->
+        <section id="recommendations" class="recommendations-section">
+            <h2>Recommendations</h2>
+            
+            <div class="recommendations-container">
+                <!-- Existing recommendations -->
+                <div class="recommendation-card">
+                    <blockquote>
+                        "Jane is a very quick learner and quickly grasps key concepts of Web development. She got a great attitude & she is an excellent team player. She has a curious mind and asks the right question. She takes initiative within a team and has potentials to lead the team."
+                    </blockquote>
+                </div>
+                
+                <div class="recommendation-card">
+                    <blockquote>
+                        "Working with Jane has been an awesome experience. She is highly knowledgeable and always goes the extra step to make sure everything is right. For any future projects that need her expertise I would definitely want to work with her again."
+                    </blockquote>
+                </div>
+                
+                <div class="recommendation-card">
+                    <blockquote>
+                        "I had worked along with Jane during the initial phase of our venture which needed Web development. She is a committed resource who has in depth knowledge about the domain. She will be an asset for any organisation!"
+                    </blockquote>
+                </div>
+            </div>
+            
+            <!-- Requirement 7: Add new recommendations to existing list -->
+            <div class="add-recommendation">
+                <h3>Leave a Recommendation</h3>
+                <form id="recommendationForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Name (Optional)">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Requirement 8: Home icon appears as specified -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-circle-up"></i>
+    </a>
+
+    <!-- JavaScript file -->
+    <script src="js/script.js"></script>
+</body>
+</html>
