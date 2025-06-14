@@ -19,11 +19,14 @@
  * - Modal Dialogs: Pop-up windows that appear over the page content
  */
 
+console.log('Recommendations.js loaded'); // DEBUG LOG
+
 // Initial recommendation data
 // This is an array of objects, where each object represents one recommendation
 // Each recommendation has:
 // - text: The recommendation message
 // - name: The name of the person giving the recommendation
+console.log('Defining initialRecommendations array'); // DEBUG LOG
 const initialRecommendations = [
     {
         text: "Jane is a very quick learner and quickly grasps key concepts of Web development. She got a great attitude & she is an excellent team player. She has a curious mind and asks the right question. She takes initiative within a team and has potentials to lead the team.",
@@ -38,6 +41,7 @@ const initialRecommendations = [
         name: "Michael Chen"
     }
 ];
+console.log('initialRecommendations defined with length:', initialRecommendations.length); // DEBUG LOG
 
 /**
  * Initializes the recommendations section with existing recommendations
@@ -50,38 +54,50 @@ const initialRecommendations = [
  * 5. Sets up the recommendation form
  */
 function initializeRecommendations() {
+    console.log('initializeRecommendations function called'); // DEBUG LOG
     // STEP 1: Find the recommendations container in the HTML
     const recommendationsContainer = document.querySelector('.recommendations-container');
+    console.log('Recommendations container found:', recommendationsContainer); // DEBUG LOG
     
     // STEP 2: Clear any existing hardcoded recommendations
     recommendationsContainer.innerHTML = '';
     
-    // STEP 3: Add each recommendation to the DOM
-    initialRecommendations.forEach(rec => {
-        // STEP 4: Create recommendation card
-        const card = document.createElement('div');
-        card.className = 'recommendation-card';
+    // STEP 3: Check if we have recommendations to add
+    if (initialRecommendations && initialRecommendations.length > 0) {
+        console.log(`Found ${initialRecommendations.length} initial recommendations to add`); // DEBUG LOG
         
-        // STEP 5: Create blockquote with the message
-        // A blockquote is an HTML element for quoted content
-        const blockquote = document.createElement('blockquote');
-        blockquote.textContent = `"${rec.text}"`;
-        
-        // STEP 6: Add recommender name if available
-        if (rec.name) {
-            const nameSpan = document.createElement('span');
-            nameSpan.className = 'recommender-name';
-            nameSpan.textContent = ` - ${rec.name}`;
-            blockquote.appendChild(nameSpan);
-        }
-        
-        // STEP 7: Add to card and then to container
-        card.appendChild(blockquote);
-        recommendationsContainer.appendChild(card);
-    });
+        // STEP 4: Add each recommendation to the DOM
+        initialRecommendations.forEach((rec, index) => {
+            console.log(`Creating recommendation card ${index + 1}`); // DEBUG LOG
+            // Create recommendation card
+            const card = document.createElement('div');
+            card.className = 'recommendation-card';
+            
+            // Create blockquote with the message
+            const blockquote = document.createElement('blockquote');
+            blockquote.textContent = `"${rec.text}"`;
+            
+            // Add recommender name if available
+            if (rec.name) {
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'recommender-name';
+                nameSpan.textContent = ` - ${rec.name}`;
+                blockquote.appendChild(nameSpan);
+            }
+            
+            // Add to card and then to container
+            card.appendChild(blockquote);
+            recommendationsContainer.appendChild(card);
+            console.log('Added card to container:', card); // DEBUG LOG
+        });
+    } else {
+        console.warn('No initial recommendations found to display'); // DEBUG LOG
+    }
     
-    // STEP 8: Set up the recommendation form event listener
+    // STEP 5: Set up the recommendation form event listener
     setupRecommendationForm();
+    
+    console.log('Recommendations initialization complete'); // DEBUG LOG
 }
 
 /**
@@ -94,8 +110,11 @@ function initializeRecommendations() {
  * 4. It then shows a confirmation dialog before adding the recommendation
  */
 function setupRecommendationForm() {
+    console.log('Setting up recommendation form'); // DEBUG LOG
+    
     // STEP 1: Find the recommendation form in the HTML
     const recommendationForm = document.getElementById('recommendationForm');
+    console.log('Form found:', recommendationForm); // DEBUG LOG
     
     // STEP 2: Only proceed if the form exists
     if (recommendationForm) {

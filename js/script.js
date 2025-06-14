@@ -40,10 +40,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // STEP 3: Initialize skills section
     // This function comes from skills.js and adds all your skills to the page
     initializeSkills();
+    console.log('Skills initialized'); // DEBUG LOG
    
     // STEP 4: Initialize recommendations section
     // This function comes from recommendations.js and adds the recommendations to the page
+    console.log('About to initialize recommendations...'); // DEBUG LOG
     initializeRecommendations();
+    console.log('Recommendations initialization called'); // DEBUG LOG
     
     // STEP 5: Initialize animations and UI interactions
     // This function comes from animations.js and sets up all the smooth animations
@@ -57,6 +60,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // This function comes from animations.js and highlights the current section in the nav menu
     trackActiveSection();
     
+    // STEP 8: Check if styles are properly loaded
+    checkStylesLoaded();
+    
     // This message will appear in the browser's console when everything is ready
     console.log('Portfolio application initialized successfully!');
 });
+
+/**
+ * Checks if CSS styles are properly loaded by testing a few key elements
+ */
+function checkStylesLoaded() {
+    console.log('Checking if styles are loaded properly...');
+    
+    // Check recommendations card styling
+    const recommendationCards = document.querySelectorAll('.recommendation-card');
+    if (recommendationCards.length > 0) {
+        const styles = window.getComputedStyle(recommendationCards[0]);
+        console.log('Recommendation card background color:', styles.backgroundColor);
+        console.log('Recommendation card border-radius:', styles.borderRadius);
+        console.log('Recommendation card box-shadow:', styles.boxShadow);
+    } else {
+        console.warn('No recommendation cards found to check styles');
+    }
+    
+    // Check form styling
+    const form = document.querySelector('.add-recommendation');
+    if (form) {
+        const formStyles = window.getComputedStyle(form);
+        console.log('Form background color:', formStyles.backgroundColor);
+        console.log('Form border-radius:', formStyles.borderRadius);
+        console.log('Form padding:', formStyles.padding);
+    } else {
+        console.warn('Recommendation form not found to check styles');
+    }
+}
