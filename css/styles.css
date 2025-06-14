@@ -471,6 +471,15 @@ h2:hover:after {
     line-height: 1.7;
 }
 
+/* 
+ * Hover effect for quote marks
+ * Makes the quote marks more visible on hover
+ */
+.recommendation-card:hover blockquote:before,
+.recommendation-card:hover blockquote:after {
+    opacity: 0.6;
+}
+
 .recommendation-card blockquote:before,
 .recommendation-card blockquote:after {
     content: '"';
@@ -481,379 +490,583 @@ h2:hover:after {
     transition: opacity var(--transition-medium), transform var(--transition-medium);
 }
 
-.recommendation-card:hover blockquote:before,
-.recommendation-card:hover blockquote:after {
-    opacity: 0.6;
-}
-
 .recommendation-card blockquote:before {
     top: -10px;
     left: 0;
 }
 
+/* 
+ * Position of the closing quote mark
+ * Bottom right of the quote text
+ */
 .recommendation-card blockquote:after {
     content: '"';
     bottom: -20px;
     right: 0;
 }
 
+/* 
+ * Hover animation for opening quote mark
+ * Makes it move slightly upward
+ */
 .recommendation-card:hover blockquote:before {
     transform: translateY(-2px);
 }
 
+/* 
+ * Hover animation for closing quote mark
+ * Makes it move slightly downward
+ */
 .recommendation-card:hover blockquote:after {
     transform: translateY(2px);
 }
 
-/* Style for recommender names */
+/* 
+ * Style for recommender names
+ * The name of the person who gave the recommendation
+ */
 .recommender-name {
-    display: block;
-    font-style: normal;
-    font-weight: bold;
-    text-align: right;
-    margin-top: 10px;
-    color: var(--primary-color);
-    font-size: 0.9em;
-    transition: transform var(--transition-medium);
+    display: block;          /* Block display for proper spacing */
+    font-style: normal;      /* Reset italic style from blockquote */
+    font-weight: bold;       /* Make name bold for emphasis */
+    text-align: right;       /* Right-align like a signature */
+    margin-top: 10px;        /* Space above the name */
+    color: var(--primary-color); /* Purple text color */
+    font-size: 0.9em;        /* Slightly smaller than normal text */
+    transition: transform var(--transition-medium); /* Animation for hover */
 }
 
+/* 
+ * Hover effect for recommender names
+ * Subtle shift to the left when hovering over the card
+ */
 .recommendation-card:hover .recommender-name {
     transform: translateX(-3px);
 }
 
 @keyframes staggerFadeIn {
     from {
-        opacity: 0;
-        transform: translateY(20px);
+        opacity: 0;          /* Start completely invisible */
+        transform: translateY(20px); /* Start 20px below final position */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;          /* End fully visible */
+        transform: translateY(0); /* End at final position */
     }
 }
 
 /* ===== ADD NEW RECOMMENDATIONS FORM STYLES ===== */
-/* Requirement 7: Add new recommendations form */
+/* 
+ * Styles for the form section where users can submit new recommendations
+ * This includes inputs, text areas, and the submit button
+ */
 .add-recommendation {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 35px;
-    box-shadow: var(--card-shadow);
-    margin-top: 20px;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.5s forwards;
-    position: relative;
-    overflow: hidden;
+    background-color: var(--card-bg);  /* White background */
+    border-radius: 12px;               /* Rounded corners */
+    padding: 35px;                     /* Generous inner spacing */
+    box-shadow: var(--card-shadow);    /* Subtle shadow */
+    margin-top: 20px;                  /* Space above the form */
+    transform: translateY(20px);       /* Start position for animation */
+    opacity: 0;                        /* Start invisible */
+    animation: fadeInUp 0.8s ease-out 0.5s forwards; /* Animation with delay */
+    position: relative;                /* For positioning the decorative bar */
+    overflow: hidden;                  /* Hide overflow for animations */
 }
 
+/* 
+ * Decorative bar animation for recommendation form
+ * Creates a colored line that expands across the top on hover
+ */
 .add-recommendation:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--primary-color), #9b6dff);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition-medium);
+    content: '';                       /* Required for pseudo-elements */
+    position: absolute;                /* Position relative to form container */
+    top: 0;                            /* Align to top */
+    left: 0;                           /* Align to left */
+    width: 100%;                       /* Full width */
+    height: 5px;                       /* Height of the bar */
+    background: linear-gradient(to right, var(--primary-color), #9b6dff); /* Gradient color */
+    transform: scaleX(0);              /* Start with zero width */
+    transform-origin: left;            /* Animation starts from left */
+    transition: transform var(--transition-medium); /* Smooth animation */
 }
 
+/* 
+ * Show the decorative bar on hover
+ * Expands from left to right
+ */
 .add-recommendation:hover:before {
-    transform: scaleX(1);
+    transform: scaleX(1);              /* Expand to full width */
 }
 
+/* 
+ * Form title styling
+ * "Add a Recommendation" heading above the form
+ */
 .add-recommendation h3 {
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 1.8rem;
-    color: var(--primary-color);
+    margin-bottom: 25px;               /* Space below the heading */
+    text-align: center;                /* Center-aligned text */
+    font-size: 1.8rem;                 /* Large text */
+    color: var(--primary-color);       /* Purple text color */
 }
 
+/* 
+ * Form group container
+ * Each group contains a label and an input or textarea
+ */
 .form-group {
-    margin-bottom: 25px;
-    position: relative;
+    margin-bottom: 25px;               /* Space between form fields */
+    position: relative;                /* For positioning effects */
 }
 
+/* 
+ * Form input and textarea fields
+ * Styling for text fields and text areas
+ */
 .form-group input,
 .form-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all var(--transition-medium);
-    background-color: rgba(249, 249, 249, 0.5);
+    width: 100%;                       /* Full width of container */
+    padding: 15px;                     /* Comfortable inner spacing */
+    border: 1px solid #e0e0e0;         /* Light gray border */
+    border-radius: 8px;                /* Rounded corners */
+    font-size: 16px;                   /* Readable text size */
+    transition: all var(--transition-medium); /* Smooth animation for focus */
+    background-color: rgba(249, 249, 249, 0.5); /* Very light gray background */
 }
 
+/* 
+ * Focus states for input and textarea
+ * Visual feedback when the user is interacting with a field
+ */
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(106, 61, 232, 0.1);
-    background-color: white;
+    outline: none;                     /* Remove default browser outline */
+    border-color: var(--primary-color); /* Purple border */
+    box-shadow: 0 0 0 3px rgba(106, 61, 232, 0.1); /* Subtle glow effect */
+    background-color: white;           /* Pure white background */
 }
 
+/* 
+ * Textarea-specific styling
+ * For the larger text area used for recommendation message
+ */
 .form-group textarea {
-    height: 150px;
-    resize: vertical;
+    height: 150px;                     /* Taller than regular inputs */
+    resize: vertical;                  /* Allow vertical resizing only */
 }
 
+/* 
+ * Submit button styling
+ * The button to submit the recommendation form
+ */
 .btn-submit {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 35px;
-    font-size: 16px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: all var(--transition-medium);
-    position: relative;
-    overflow: hidden;
+    background-color: var(--primary-color); /* Purple background */
+    color: white;                      /* White text */
+    border: none;                      /* No border */
+    border-radius: 8px;                /* Rounded corners */
+    padding: 14px 35px;                /* Comfortable padding */
+    font-size: 16px;                   /* Readable text size */
+    cursor: pointer;                   /* Hand cursor on hover */
+    display: block;                    /* Block-level element */
+    margin: 0 auto;                    /* Center horizontally */
+    transition: all var(--transition-medium); /* Smooth hover animation */
+    position: relative;                /* For the ripple effect */
+    overflow: hidden;                  /* Hide ripple overflow */
 }
 
+/* 
+ * Hover effect for submit button
+ * Button lifts up and gets a shadow
+ */
 .btn-submit:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(106, 61, 232, 0.3);
+    background-color: var(--primary-hover); /* Darker purple */
+    transform: translateY(-3px);       /* Lift up 3px */
+    box-shadow: 0 5px 15px rgba(106, 61, 232, 0.3); /* Colored shadow */
 }
 
+/* 
+ * Active state for submit button
+ * When the button is being clicked
+ */
 .btn-submit:active {
-    transform: translateY(-1px);
+    transform: translateY(-1px);       /* Slightly less lift when pressed */
 }
 
+/* 
+ * Ripple effect setup for submit button
+ * Creates the starting point for the ripple animation
+ */
 .btn-submit:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.5);
-    opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%);
-    transform-origin: 50% 50%;
+    content: '';                       /* Required for pseudo-elements */
+    position: absolute;                /* Position relative to button */
+    top: 50%;                          /* Center vertically */
+    left: 50%;                         /* Center horizontally */
+    width: 5px;                        /* Initial tiny size */
+    height: 5px;                       /* Initial tiny size */
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    opacity: 0;                        /* Start invisible */
+    border-radius: 100%;               /* Perfect circle */
+    transform: scale(1, 1) translate(-50%); /* Center the ripple */
+    transform-origin: 50% 50%;         /* Scale from center */
 }
 
+/* 
+ * Trigger the ripple animation on button focus
+ * Visual feedback when button is clicked
+ */
 .btn-submit:focus:after {
-    animation: ripple 1s ease-out;
+    animation: ripple 1s ease-out;     /* Run the ripple animation */
 }
 
+/* 
+ * Ripple animation keyframes
+ * Defines how the circular ripple grows and fades
+ */
 @keyframes ripple {
     0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
+        transform: scale(0, 0);        /* Start tiny */
+        opacity: 0.5;                  /* Start partially visible */
     }
     100% {
-        transform: scale(40, 40);
-        opacity: 0;
+        transform: scale(40, 40);      /* Grow very large */
+        opacity: 0;                    /* Fade out completely */
     }
 }
 
 /* ===== BACK TO TOP BUTTON STYLES ===== */
-/* Requirement 8: Back to top button (Home icon) */
+/* 
+ * Back to top button (fixed position floating button)
+ * Allows users to quickly scroll back to the top of the page
+ */
 .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: var(--primary-color);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    font-size: 24px;
-    opacity: 0;
-    transition: all var(--transition-medium);
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(106, 61, 232, 0.3);
-    transform: translateY(20px);
+    position: fixed;                   /* Fixed position regardless of scroll */
+    bottom: 30px;                      /* 30px from bottom of viewport */
+    right: 30px;                       /* 30px from right of viewport */
+    background-color: var(--primary-color); /* Purple background */
+    color: white;                      /* White icon */
+    width: 50px;                       /* Circle width */
+    height: 50px;                      /* Circle height */
+    border-radius: 50%;                /* Perfect circle */
+    display: flex;                     /* Flexbox for centering icon */
+    justify-content: center;           /* Center horizontally */
+    align-items: center;               /* Center vertically */
+    text-decoration: none;             /* No underline on the link */
+    font-size: 24px;                   /* Large icon */
+    opacity: 0;                        /* Start invisible */
+    transition: all var(--transition-medium); /* Smooth animations */
+    z-index: 1000;                     /* Ensure it's above other content */
+    box-shadow: 0 4px 15px rgba(106, 61, 232, 0.3); /* Subtle shadow */
+    transform: translateY(20px);       /* Start position for animation */
 }
 
+/* 
+ * Visible state for back-to-top button
+ * Added via JavaScript when user scrolls down the page
+ */
 .back-to-top.visible {
-    opacity: 0.9;
-    transform: translateY(0);
+    opacity: 0.9;                      /* Mostly opaque */
+    transform: translateY(0);          /* Move to final position */
 }
 
+/* 
+ * Hover effect for back-to-top button
+ * Visual feedback when user hovers over the button
+ */
 .back-to-top:hover {
-    opacity: 1;
-    background-color: var(--primary-hover);
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(106, 61, 232, 0.4);
+    opacity: 1;                        /* Fully opaque */
+    background-color: var(--primary-hover); /* Darker purple */
+    transform: translateY(-5px);       /* Lift up 5px */
+    box-shadow: 0 6px 20px rgba(106, 61, 232, 0.4); /* Stronger shadow */
 }
 
 /* ===== MODAL STYLES ===== */
-/* Modal for recommendation confirmation (Requirement 9) */
+/* 
+ * Modal overlay container
+ * Covers the entire screen with a semi-transparent background
+ * Used for confirmation dialogs after form submission
+ */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1001;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity var(--transition-medium);
+    display: none;                     /* Hidden by default */
+    position: fixed;                   /* Fixed position covers entire viewport */
+    top: 0;                            /* Align to top */
+    left: 0;                           /* Align to left */
+    width: 100%;                       /* Full width of viewport */
+    height: 100%;                      /* Full height of viewport */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1001;                     /* Above everything else */
+    justify-content: center;           /* Center contents horizontally */
+    align-items: center;               /* Center contents vertically */
+    opacity: 0;                        /* Start invisible for animation */
+    transition: opacity var(--transition-medium); /* Fade in smoothly */
 }
 
+/* 
+ * Visible state for modal
+ * Added via JavaScript when modal should be shown
+ */
 .modal.visible {
-    opacity: 1;
+    opacity: 1;                        /* Fully visible */
 }
 
+/* 
+ * Modal content box
+ * The white box in the center of the modal with the message
+ */
 .modal-content {
-    background-color: white;
-    padding: 35px;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transform: scale(0.8);
-    opacity: 0;
-    transition: all var(--transition-medium);
+    background-color: white;           /* White background */
+    padding: 35px;                     /* Generous inner spacing */
+    border-radius: 12px;               /* Rounded corners */
+    max-width: 500px;                  /* Limit width on large screens */
+    width: 90%;                        /* Use 90% of available width */
+    text-align: center;                /* Center-aligned text */
+    position: relative;                /* For positioning the close button */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Strong shadow for depth */
+    transform: scale(0.8);             /* Start smaller for animation */
+    opacity: 0;                        /* Start invisible */
+    transition: all var(--transition-medium); /* Smooth animation */
 }
 
+/* 
+ * Animation for modal content
+ * Scales up and fades in when modal becomes visible
+ */
 .modal.visible .modal-content {
-    transform: scale(1);
-    opacity: 1;
+    transform: scale(1);               /* Full size */
+    opacity: 1;                        /* Fully visible */
 }
 
+/* 
+ * Modal title styling
+ * The heading at the top of the modal
+ */
 .modal-content h3 {
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    font-size: 1.8rem;
+    margin-bottom: 20px;               /* Space below heading */
+    color: var(--primary-color);       /* Purple text */
+    font-size: 1.8rem;                 /* Large text */
 }
 
+/* 
+ * Modal close button (X in the corner)
+ * Allows users to dismiss the modal
+ */
 .close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #888;
-    transition: color var(--transition-medium), transform var(--transition-medium);
+    position: absolute;                /* Position relative to modal content */
+    top: 15px;                         /* 15px from top */
+    right: 20px;                       /* 20px from right */
+    font-size: 24px;                   /* Large X */
+    cursor: pointer;                   /* Hand cursor on hover */
+    color: #888;                       /* Medium gray */
+    transition: color var(--transition-medium), transform var(--transition-medium); /* Smooth animations */
 }
 
+/* 
+ * Hover effect for close button
+ * Darkens and rotates on hover
+ */
 .close-modal:hover {
-    color: #333;
-    transform: rotate(90deg);
+    color: #333;                       /* Darker gray */
+    transform: rotate(90deg);          /* Rotate 90 degrees */
 }
 
+/* 
+ * Modal buttons (Yes, No, OK)
+ * Action buttons at the bottom of modals
+ */
 .modal-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 25px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: all var(--transition-medium);
+    background-color: var(--primary-color); /* Purple background */
+    color: white;                      /* White text */
+    border: none;                      /* No border */
+    border-radius: 8px;                /* Rounded corners */
+    padding: 12px 25px;                /* Comfortable padding */
+    font-size: 16px;                   /* Readable text size */
+    cursor: pointer;                   /* Hand cursor on hover */
+    margin-top: 20px;                  /* Space above buttons */
+    transition: all var(--transition-medium); /* Smooth hover animation */
 }
 
+/* 
+ * Hover effect for modal buttons
+ * Buttons lift up and get a shadow
+ */
 .modal-button:hover {
-    background-color: var(--primary-hover);
-    box-shadow: 0 5px 15px rgba(106, 61, 232, 0.2);
-    transform: translateY(-2px);
+    background-color: var(--primary-hover); /* Darker purple */
+    box-shadow: 0 5px 15px rgba(106, 61, 232, 0.2); /* Subtle shadow */
+    transform: translateY(-2px);       /* Lift up 2px */
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    display: flex;                     /* Flexbox for horizontal layout */
+    justify-content: center;           /* Center buttons horizontally */
+    gap: 15px;                         /* Space between buttons */
+    margin-top: 20px;                  /* Space above button container */
 }
 
 /* ===== RESPONSIVE DESIGN STYLES ===== */
-/* Responsive Design */
+/* 
+ * Responsive Design rules
+ * These rules adjust the layout for different screen sizes
+ * This ensures the website looks good on desktops, tablets, and phones
+ */
+
+/* 
+ * Medium screens (tablets, smaller laptops)
+ * Applied when the viewport width is 992px or less
+ */
 @media (max-width: 992px) {
+    /* Change skills grid to 2 columns instead of 3 */
     .skills-container {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Change recommendations grid to 2 columns instead of 3 */
     .recommendations-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    /* Stack header elements vertically */
     header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 5%;
+        flex-direction: column;        /* Change from row to column layout */
+        text-align: center;            /* Center-align text */
+        padding: 15px 5%;              /* Reduce padding */
     }
     
+    /* Center the navigation and add space above */
     nav ul {
-        margin-top: 15px;
-        justify-content: center;
+        margin-top: 15px;              /* Space above navigation */
+        justify-content: center;        /* Center navigation links */
     }
     
+    /* Adjust spacing between navigation items */
     nav ul li {
-        margin: 0 10px;
+        margin: 0 10px;                /* Equal margin on both sides */
     }
     
+    /* Stack profile elements vertically */
     .profile-container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column;        /* Change from row to column layout */
+        text-align: center;            /* Center-align text */
     }
     
+    /* Center and resize profile image */
     .profile-image {
-        flex: 0 0 200px;
-        margin: 0 auto;
+        flex: 0 0 200px;               /* Smaller fixed size */
+        margin: 0 auto;                /* Center horizontally */
     }
     
+    /* Center the decorative line under headings */
     h2:after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 50%;                     /* Center horizontally */
+        transform: translateX(-50%);   /* Perfect centering */
     }
     
+    /* Center-align section headings */
     h2 {
-        text-align: center;
+        text-align: center;            /* Center-align text */
     }
     
+    /* Change skills grid to single column */
     .skills-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;    /* Single column layout */
     }
     
+    /* Change recommendations grid to single column */
     .recommendations-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;    /* Single column layout */
     }
     
+    /* Adjust project hover effect for touch screens */
     .project:hover {
-        transform: translateY(-5px);
-        transform: translateX(0);
+        transform: translateY(-5px);   /* Move up instead of right */
+        transform: translateX(0);      /* Cancel the left-right movement */
+    }
+}
+
+/* 
+ * Small screens (phones in landscape, small tablets)
+ * Applied when the viewport width is 768px or less
+ */
+@media (max-width: 768px) {
+    /* Stack header elements vertically */
+    header {
+        flex-direction: column;        /* Change from row to column layout */
+        text-align: center;            /* Center-align text */
+        padding: 15px 5%;              /* Reduce padding */
+    }
+    
+    /* Center the navigation and add space above */
+    nav ul {
+        margin-top: 15px;              /* Space above navigation */
+        justify-content: center;        /* Center navigation links */
+    }
+    
+    /* Adjust spacing between navigation items */
+    nav ul li {
+        margin: 0 10px;                /* Equal margin on both sides */
+    }
+    
+    /* Stack profile elements vertically */
+    .profile-container {
+        flex-direction: column;        /* Change from row to column layout */
+        text-align: center;            /* Center-align text */
+    }
+    
+    /* Center and resize profile image */
+    .profile-image {
+        flex: 0 0 200px;               /* Smaller fixed size */
+        margin: 0 auto;                /* Center horizontally */
+    }
+    
+    /* Center the decorative line under headings */
+    h2:after {
+        left: 50%;                     /* Center horizontally */
+        transform: translateX(-50%);   /* Perfect centering */
+    }
+    
+    /* Center-align section headings */
+    h2 {
+        text-align: center;            /* Center-align text */
+    }
+    
+    /* Change skills grid to single column */
+    .skills-container {
+        grid-template-columns: 1fr;    /* Single column layout */
+    }
+    
+    /* Change recommendations grid to single column */
+    .recommendations-container {
+        grid-template-columns: 1fr;    /* Single column layout */
+    }
+    
+    /* Adjust project hover effect for touch screens */
+    .project:hover {
+        transform: translateY(-5px);   /* Move up instead of right */
+        transform: translateX(0);      /* Cancel the left-right movement */
     }
 }
 
 @media (max-width: 576px) {
+    /* Stack navigation links vertically */
     nav ul {
         flex-direction: column;
         align-items: center;
     }
     
+    /* Add space between nav items when stacked */
     nav ul li {
-        margin: 5px 0;
+        margin: 5px 0;                 /* Vertical spacing, no horizontal */
     }
     
+    /* Reduce profile spacing */
     .profile-container {
-        gap: 20px;
+        gap: 20px;                     /* Less space between elements */
     }
     
+    /* Make back-to-top button smaller */
     .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
+        bottom: 20px;                  /* Position closer to bottom */
+        right: 20px;                   /* Position closer to right */
+        width: 45px;                   /* Smaller width */
+        height: 45px;                  /* Smaller height */
     }
 }
