@@ -354,12 +354,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (targetSection) {
                 // Highlight the active navigation link
-                navLinks.forEach(navLink => navLink.classList.remove('active'));
-                this.classList.add('active');
+                //navLinks.forEach(navLink => navLink.classList.remove('active'));
+                //this.classList.add('active');
                 
                 // Smooth scroll with animation
                 const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - 0;
                 
                 window.scrollTo({
                     top: targetPosition,
@@ -600,5 +600,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Call all initialization functions
-    trackActiveSection();
+    //trackActiveSection();
 });
