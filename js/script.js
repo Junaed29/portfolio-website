@@ -1,6 +1,9 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', function() {
-        // Initialize external image links
+    // Initialize skills dynamically
+    initializeSkills();
+    
+    // Initialize external image links
     initializeImageLinks();
    
     // Initialize existing recommendations
@@ -337,44 +340,95 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
         
-    // Function to set all images to use external links instead of local files
+    // Function to set profile image to use external link instead of local file
     function initializeImageLinks() {
-        // Define the external image URLs
-        const imageUrls = {
-            profile: "https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png",
-            html5: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-            javascript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-            java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-            react: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-            nodejs: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-            css3: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-        };
+        // Define the profile image URL
+        const profileImageUrl = "https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png";
         
         // Update profile image
         const profileImage = document.querySelector('.profile-image img');
         if (profileImage) {
-            profileImage.src = imageUrls.profile;
+            profileImage.src = profileImageUrl;
             profileImage.alt = "Jane Doe Profile";
         }
-        
-        // Update skill icons
-        const skillIcons = document.querySelectorAll('.skill-icon img');
-        skillIcons.forEach(icon => {
-            const alt = icon.alt.toLowerCase();
-            
-            if (alt.includes('html')) {
-                icon.src = imageUrls.html5;
-            } else if (alt.includes('javascript')) {
-                icon.src = imageUrls.javascript;
-            } else if (alt.includes('java')) {
-                icon.src = imageUrls.java;
-            } else if (alt.includes('react')) {
-                icon.src = imageUrls.react;
-            } else if (alt.includes('node')) {
-                icon.src = imageUrls.nodejs;
-            } else if (alt.includes('css')) {
-                icon.src = imageUrls.css3;
+        // Note: Skill icons are now handled by the initializeSkills function
+    }
+    
+    // Function to initialize skills dynamically
+    function initializeSkills() {
+        // Skills data with integrated icon URLs
+        const skillsData = [
+            { 
+                name: "HTML", 
+                experience: "2 years experience",
+                iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+            },
+            { 
+                name: "JavaScript", 
+                experience: "1.5 years experience",
+                iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            },
+            { 
+                name: "Java", 
+                experience: ".5 years experience",
+                iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+            },
+            { 
+                name: "React", 
+                experience: "1 year experience",
+                iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+            },
+            { 
+                name: "Node.js", 
+                experience: "1 year experience",
+                iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+            },
+            { 
+                name: "CSS", 
+                experience: "2 years experience",
+                iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
             }
-        });
+        ];
+        
+        // Get the skills container
+        const skillsContainer = document.querySelector('.skills-container');
+        
+        // Clear any existing skill cards
+        if (skillsContainer) {
+            skillsContainer.innerHTML = '';
+            
+            // Create and append skill cards
+            skillsData.forEach(skill => {
+                // Create skill card
+                const skillCard = document.createElement('div');
+                skillCard.className = 'skill-card';
+                
+                // Create skill icon container
+                const skillIcon = document.createElement('div');
+                skillIcon.className = 'skill-icon';
+                
+                // Create and set up the image element
+                const img = document.createElement('img');
+                img.src = skill.iconUrl;
+                img.alt = `${skill.name} Icon`;
+                
+                // Create skill name
+                const skillName = document.createElement('h3');
+                skillName.textContent = skill.name;
+                
+                // Create experience text
+                const experience = document.createElement('p');
+                experience.textContent = skill.experience;
+                
+                // Assemble the skill card
+                skillIcon.appendChild(img);
+                skillCard.appendChild(skillIcon);
+                skillCard.appendChild(skillName);
+                skillCard.appendChild(experience);
+                
+                // Add to the container
+                skillsContainer.appendChild(skillCard);
+            });
+        }
     }
 });
