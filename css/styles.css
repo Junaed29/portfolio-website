@@ -231,6 +231,17 @@ h2 {
     right: 0;
 }
 
+/* Style for recommender names */
+.recommender-name {
+    display: block;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+    color: #555;
+    font-size: 0.9em;
+}
+
 /* Requirement 7: Add new recommendations form */
 .add-recommendation {
     background-color: white;

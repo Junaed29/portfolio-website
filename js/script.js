@@ -1,5 +1,8 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize existing recommendations
+    initializeRecommendations();
+    
     // Get the recommendation form and attach submit event
     const recommendationForm = document.getElementById('recommendationForm');
     
@@ -17,6 +20,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 // First show confirmation dialog
                 showConfirmationDialog(nameInput.value, messageInput.value);
             }
+        });
+    }
+    
+    // Function to initialize existing recommendations from JS
+    function initializeRecommendations() {
+        // Clear existing hardcoded recommendations
+        const recommendationsContainer = document.querySelector('.recommendations-container');
+        recommendationsContainer.innerHTML = '';
+        
+        // Initial recommendation data
+        const initialRecommendations = [
+            {
+                text: "Jane is a very quick learner and quickly grasps key concepts of Web development. She got a great attitude & she is an excellent team player. She has a curious mind and asks the right question. She takes initiative within a team and has potentials to lead the team.",
+                name: "David Miller"
+            },
+            {
+                text: "Working with Jane has been an awesome experience. She is highly knowledgeable and always goes the extra step to make sure everything is right. For any future projects that need her expertise I would definitely want to work with her again.",
+                name: "Sarah Johnson"
+            },
+            {
+                text: "I had worked along with Jane during the initial phase of our venture which needed Web development. She is a committed resource who has in depth knowledge about the domain. She will be an asset for any organisation!",
+                name: "Michael Chen"
+            }
+        ];
+        
+        // Add each recommendation to the DOM
+        initialRecommendations.forEach(rec => {
+            // Create recommendation card
+            const card = document.createElement('div');
+            card.className = 'recommendation-card';
+            
+            // Create blockquote with the message
+            const blockquote = document.createElement('blockquote');
+            blockquote.textContent = `"${rec.text}"`;
+            
+            // Add recommender name if available
+            if (rec.name) {
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'recommender-name';
+                nameSpan.textContent = ` - ${rec.name}`;
+                blockquote.appendChild(nameSpan);
+            }
+            
+            // Add to card and then to container
+            card.appendChild(blockquote);
+            recommendationsContainer.appendChild(card);
         });
     }
     
