@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize existing recommendations
     initializeRecommendations();
     
+    // Initialize scroll animations
+    initializeScrollAnimations();
+    
     // Get the recommendation form and attach submit event
     const recommendationForm = document.getElementById('recommendationForm');
     
@@ -127,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeBtn.className = 'close-modal';
             closeBtn.innerHTML = '&times;';
             closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeModal(modal);
             });
             
             // Add confirmation message
@@ -140,17 +143,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add button container for Yes/No buttons
             const buttonContainer = document.createElement('div');
             buttonContainer.className = 'button-container';
-            buttonContainer.style.display = 'flex';
-            buttonContainer.style.justifyContent = 'center';
-            buttonContainer.style.gap = '10px';
-            buttonContainer.style.marginTop = '15px';
             
             // Add Yes button
             const yesButton = document.createElement('button');
             yesButton.className = 'modal-button';
             yesButton.textContent = 'Yes';
             yesButton.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeModal(modal);
                 addRecommendation(name, message);
             });
             
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
             noButton.style.backgroundColor = '#888';
             noButton.textContent = 'No';
             noButton.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeModal(modal);
             });
             
             // Append all elements to modal
@@ -187,10 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!buttonContainer) {
                 buttonContainer = document.createElement('div');
                 buttonContainer.className = 'button-container';
-                buttonContainer.style.display = 'flex';
-                buttonContainer.style.justifyContent = 'center';
-                buttonContainer.style.gap = '10px';
-                buttonContainer.style.marginTop = '15px';
                 
                 const modalContent = modal.querySelector('.modal-content');
                 modalContent.appendChild(buttonContainer);
@@ -204,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
             yesButton.className = 'modal-button';
             yesButton.textContent = 'Yes';
             yesButton.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeModal(modal);
                 addRecommendation(name, message);
             });
             
@@ -214,22 +209,33 @@ document.addEventListener('DOMContentLoaded', function() {
             noButton.style.backgroundColor = '#888';
             noButton.textContent = 'No';
             noButton.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeModal(modal);
             });
             
             buttonContainer.appendChild(yesButton);
             buttonContainer.appendChild(noButton);
         }
         
-        // Display the modal
+        // Display the modal with animation
         modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('visible');
+        }, 10);
         
         // Close modal when clicking outside the content
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
-                modal.style.display = 'none';
+                closeModal(modal);
             }
         });
+    }
+    
+    // Helper function to close modals with animation
+    function closeModal(modal) {
+        modal.classList.remove('visible');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300); // Match transition duration
     }
     
     // Function to show thank you message after submitting recommendation
@@ -251,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeBtn.className = 'close-modal';
             closeBtn.innerHTML = '&times;';
             closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeModal(modal);
             });
             
             // Add thank you message
@@ -266,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
             okButton.className = 'modal-button';
             okButton.textContent = 'OK';
             okButton.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeModal(modal);
             });
             
             // Append all elements to modal
@@ -280,13 +286,16 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(modal);
         }
         
-        // Display the modal
+        // Display the modal with animation
         modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('visible');
+        }, 10);
         
         // Close modal when clicking outside the content
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
-                modal.style.display = 'none';
+                closeModal(modal);
             }
         });
     }
@@ -296,6 +305,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create new recommendation card
         const newRecommendation = document.createElement('div');
         newRecommendation.className = 'recommendation-card';
+        // Start with animation initial state
+        newRecommendation.style.opacity = '0';
+        newRecommendation.style.transform = 'translateY(20px)';
         
         // Create blockquote with the submitted message
         const blockquote = document.createElement('blockquote');
@@ -316,6 +328,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const recommendationsContainer = document.querySelector('.recommendations-container');
         recommendationsContainer.appendChild(newRecommendation);
         
+        // Animate the new card after a brief delay
+        setTimeout(() => {
+            newRecommendation.style.transition = 'all 0.5s ease-out';
+            newRecommendation.style.opacity = '1';
+            newRecommendation.style.transform = 'translateY(0)';
+        }, 50);
+        
         // Reset form
         document.getElementById('recommendationForm').reset();
         
@@ -334,8 +353,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
+                // Highlight the active navigation link
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Smooth scroll with animation
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
                 window.scrollTo({
-                    top: targetSection.offsetTop ,
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             }
@@ -481,4 +508,97 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+    
+    // Initialize scroll animations with Intersection Observer
+    function initializeScrollAnimations() {
+        // Setup Intersection Observer options
+        const options = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.15 // trigger when 15% of element is visible
+        };
+        
+        // Observer for sections
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    sectionObserver.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, options);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0'; // Start hidden
+            sectionObserver.observe(section);
+        });
+        
+        // Observer for back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Initial check
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            }
+        }
+        
+        // Observer for recommendation cards (staggered animation)
+        const recommendationObserver = new IntersectionObserver((entries) => {
+            let delay = 0.1;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${delay}s`;
+                    delay += 0.1;
+                    recommendationObserver.unobserve(entry.target);
+                }
+            });
+        }, options);
+        
+        // Observe recommendation cards
+        document.querySelectorAll('.recommendation-card').forEach(card => {
+            recommendationObserver.observe(card);
+        });
+    }
+    
+    // Track active section on scroll for navigation highlighting
+    function trackActiveSection() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const headerHeight = document.querySelector('header').offsetHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerHeight - 100; // Add offset for better UX
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').substring(1);
+                
+                if (href === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // Call all initialization functions
+    trackActiveSection();
 });
