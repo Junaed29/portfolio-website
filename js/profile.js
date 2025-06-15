@@ -54,7 +54,7 @@ function initializeProfile() {
     const profileImage = document.querySelector('.profile-image img');
     if (profileImage) {
         profileImage.src = profileData.image;  // Set the image source to your profile picture
-        profileImage.alt = `${profileData.name} Profile`;  // Set alt text for accessibility
+        profileImage.alt = `${profileData.name} Profile Picture`;  // Set alt text for accessibility
     }
     
     // Update profile content
