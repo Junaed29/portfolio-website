@@ -25,7 +25,7 @@ const profileData = {
     image: "https://media.licdn.com/dms/image/v2/D5603AQEzwsKIARqc0w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1693292366940?e=1755734400&v=beta&t=6X83qdP1jLNyoRTF8DjcUxIJs1lzfLHqDoWAnSPR_pc", // Your profile picture URL
     description: "Mobile app developer with over 5 years of experience — 3 years in Android and 2+ years focused on iOS development. Skilled in Swift and SwiftUI, with a passion for crafting intuitive, high-performance iOS applications. Currently working at Beyond Innovations & Technologies Limited as an iOS Developer. Experienced in building scalable apps, integrating APIs, and delivering polished user experiences. Always exploring new ways to push mobile technology forward.", // Your bio description
     email: "junaed.dev@gmail.com",        // Your email address
-    phone: "++8801723605770"             // Your phone number
+    phone: "+601139714017"             // Your phone number
     // Note: Social links removed as they're not currently used in the UI
     // Add them back when implementing social icons in the future
 };
