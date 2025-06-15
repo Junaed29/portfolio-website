@@ -20,12 +20,12 @@
 // Profile data object - Single source of truth for all profile information
 // This object contains all your personal information in one place
 const profileData = {
-    name: "Jane Doe",                 // Your name
-    title: "Full Stack Developer",    // Your job title
-    image: "https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png", // Your profile picture URL
-    description: "I am a full stack developer with 2 years of experience in both application and presentation layers. I have worked on applications and microservices deployed on IBM Cloud. I am an avid user of IBM Watson Services and have worked on Watson Assistant, NLU, Sentiment analyzer to name a few.", // Your bio description
-    email: "jdoe@jeemail.com",        // Your email address
-    phone: "+13456764598"             // Your phone number
+    name: "Junaed Muhammad Chowdhury",                 // Your name
+    title: "iOS Developer",    // Your job title
+    image: "https://drive.usercontent.google.com/download?id=1CNE4bZp95NTL_xwvHsQJ3Cv_IcUT3kPq", // Your profile picture URL
+    description: "Mobile app developer with over 5 years of experience — 3 years in Android and 2+ years focused on iOS development. Skilled in Swift and SwiftUI, with a passion for crafting intuitive, high-performance iOS applications. Currently working at Beyond Innovations & Technologies Limited as an iOS Developer. Experienced in building scalable apps, integrating APIs, and delivering polished user experiences. Always exploring new ways to push mobile technology forward.", // Your bio description
+    email: "junaed.dev@gmail.com",        // Your email address
+    phone: "++8801723605770"             // Your phone number
     // Note: Social links removed as they're not currently used in the UI
     // Add them back when implementing social icons in the future
 };
