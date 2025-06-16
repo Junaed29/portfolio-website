@@ -115,36 +115,43 @@ nav ul li a.active:before {
 }
 
 /* 
- * Modern hover effect for navigation links
- * Creates an expanding underline effect on hover
+ * Modern hover effect for navigation links using pseudo-elements
+ * Creates a base for animated underline effect
  */
 nav ul li a:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    visibility: hidden;
-    transition: all var(--transition-medium) ease;
+    content: "";                      /* Required for pseudo-elements even if empty */
+    position: absolute;               /* Positions relative to the parent link */
+    width: 0;                         /* Starts with zero width (invisible) */
+    height: 2px;                      /* Height of the underline */
+    bottom: 0;                        /* Positioned at the bottom of the link */
+    left: 0;                          /* Starting from the left */
+    background-color: white;          /* White underline */
+    visibility: hidden;               /* Initially hidden until hover */
+    transition: all var(--transition-medium) ease; /* Smooth animation */
 }
 
 /* 
- * Hover state for navigation links
- * Keeps text white when hovering
+ * Enhanced hover state for navigation links - combined text style changes
  */
 nav ul li a:hover {
-    color: white;                     /* Maintain white text on hover */
+    color: #ffffff;                   /* Bright white text (slightly brighter than default) */
+    font-weight: 700;                 /* Bold text when hovering */
+    font-style: italic;               /* Italic text when hovering */
+    letter-spacing: 0.5px;            /* Slightly increased letter spacing */
+    transform: translateY(-2px);      /* Shift text up slightly for a "lifting" effect */
+    transition: all var(--transition-medium); /* Ensure smooth transition */
 }
 
 /* 
- * The underline animation effect when hovering over links
- * On hover, make the underline visible and expand to full width
+ * The animated underline effect when hovering over links
+ * Creates a growing underline from left to right
  */
 nav ul li a:hover:before {
     visibility: visible;              /* Show the underline */
     width: 100%;                      /* Animate to full width */
+    height: 3px;                      /* Thicker underline on hover */
+    background-color: #ffffff;        /* Bright white underline */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Subtle glow effect */
 }
 
 /* Main Content Styles */
