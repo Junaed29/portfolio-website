@@ -41,9 +41,10 @@ A fully responsive, modular, and interactive portfolio website showcasing profes
 - **HTML5** - Semantic markup structure
 - **CSS3** - Modern styling with CSS variables and flexbox layout
 - **JavaScript (Vanilla)** - Modular JS architecture without frameworks
-- **Font Awesome** - Icon library for UI elements
-- **Devicon** - Technology icons for skills section
+- **Font Awesome** - Icon library for UI elements (loaded from CDN)
+- **Devicon** - Technology icons for skills section (loaded from CDN)
 - **Intersection Observer API** - For scroll-based animations
+- **External Resources** - LinkedIn profile image and CDN-hosted icons
 
 ## Modular Architecture
 
@@ -67,21 +68,13 @@ portfolio_website_commented/
 ├── index.html           # Main HTML document with extensive comments
 ├── css/
 │   └── styles.css       # Well-organized CSS with variables and comments
-├── js/
-│   ├── animations.js    # Scroll animations and UI interactions
-│   ├── profile.js       # Personal profile information
-│   ├── projects.js      # Project portfolio data
-│   ├── recommendations.js # Testimonials and form handling
-│   ├── script.js        # Main application entry point
-│   └── skills.js        # Skills data and display logic
-└── images/              # Image assets for the website
-    ├── profile.png      # Profile picture
-    ├── html5.png        # Skill icons
-    ├── css3.png
-    ├── javascript.png
-    ├── react.png
-    ├── nodejs.png
-    └── java.png
+└── js/
+    ├── animations.js    # Scroll animations and UI interactions
+    ├── profile.js       # Personal profile information (uses external image URL)
+    ├── projects.js      # Project portfolio data
+    ├── recommendations.js # Testimonials and form handling
+    ├── script.js        # Main application entry point
+    └── skills.js        # Skills data and display logic (uses CDN for icons)
 ```
 
 ## Responsive Design
