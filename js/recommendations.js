@@ -57,18 +57,18 @@ function initializeRecommendations() {
     console.log('initializeRecommendations function called'); // DEBUG LOG
     // STEP 1: Find the recommendations container in the HTML
     const recommendationsContainer = document.querySelector('.recommendations-container');
-    console.log('Recommendations container found:', recommendationsContainer); // DEBUG LOG
+    console.log('Recommendations container found:', recommendationsContainer); // DEBUG LOG Checking if the container exists
     
     // STEP 2: Clear any existing hardcoded recommendations
     recommendationsContainer.innerHTML = '';
     
     // STEP 3: Check if we have recommendations to add
     if (initialRecommendations && initialRecommendations.length > 0) {
-        console.log(`Found ${initialRecommendations.length} initial recommendations to add`); // DEBUG LOG
+        console.log(`Found ${initialRecommendations.length} initial recommendations to add`); // DEBUG LOG 
         
         // STEP 4: Add each recommendation to the DOM
         initialRecommendations.forEach((rec, index) => {
-            console.log(`Creating recommendation card ${index + 1}`); // DEBUG LOG
+            console.log(`Creating recommendation card ${index + 1}`); // DEBUG LOG 
             // Create recommendation card
             const card = document.createElement('div');
             card.className = 'recommendation-card';
