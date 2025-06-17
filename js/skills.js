@@ -24,34 +24,35 @@
 // - iconUrl: URL to the skill's icon image
 const skillsData = [
     { 
-        name: "HTML", 
-        experience: "2 years experience",
-        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-    },
-    { 
-        name: "JavaScript", 
-        experience: "1.5 years experience",
-        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+        name: "Android", 
+        experience: "3.5 years experience",
+        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg"
     },
     { 
         name: "Java", 
-        experience: ".5 years experience",
+        experience: "3 years experience",
         iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
     },
     { 
-        name: "React", 
-        experience: "1 year experience",
-        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-    },
-    { 
-        name: "Node.js", 
-        experience: "1 year experience",
-        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-    },
-    { 
-        name: "CSS", 
+        name: "Kotlin", 
         experience: "2 years experience",
-        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
+    },
+    { 
+        name: "Apple", 
+        experience: "1.5 years experience",
+        iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apple.svg"
+    },
+    
+    { 
+        name: "Swift", 
+        experience: "1.5 year experience",
+        iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg"
+    },
+    { 
+        name: "SwiftUI", 
+        experience: "1 year experience",
+        iconUrl: "https://img.icons8.com/?size=512&id=3cCrxzZF7LfB&format=png"
     }
 ];
 
