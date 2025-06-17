@@ -371,6 +371,16 @@ h2:hover:after {
 }
 
 /* 
+ * Text justify style - creates even spacing in paragraphs
+ * Makes text aligned to both left and right margins
+ */
+.text-justify {
+    text-align: justify;           /* Justify text alignment */
+    text-justify: inter-word;      /* Use space between words for justification */
+    /* hyphens: auto;                 /* Enable automatic hyphenation for better justification */
+}
+
+/* 
  * Wave animation keyframes
  * Creates a realistic hand waving motion for the emoji
  * The hand rotates back and forth in decreasing angles to simulate natural wave

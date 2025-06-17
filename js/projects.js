@@ -23,16 +23,16 @@
 // - description: A detailed description of what the project involved
 const projectsData = [
     {
-        title: "Chatbot",
-        description: "Developed a secure website integrated with chatbot for an automobile client using HTML, CSS, JavaScript and IBM Watson Assistant"
+        title: "Purity - The Muhammadi Islam",
+        description: "Purity – The Muhammadi Islam is an Android app offering Qur’an, Hadith, prayer times, Tasbeeh counter, Qibla direction, and mosque locator. Built with Kotlin and Firebase, it features push notifications, Jitsi SDK for online Islamic meetings, and real-time data with Firestore. The app uses Google Maps API, a custom UI with Material Design, and provides rich media content like Islamic songs, videos, and wallpapers—designed to support a peaceful Islamic lifestyle for all users."
     },
     {
-        title: "Sentiment Analyzer",
-        description: "Developed and deployed a sentiment analyzer for the box reviews section of an eCommerce platform using IBM NLU"
+        title: "Hooray Health",
+        description: "Hooray Health is a native mobile healthcare app developed using Java and XML for Android and Swift with SwiftUI for iOS. The app allows users to easily find nearby medical locations, view operational hours, services offered, and contact details. It also provides a pharmacy comparison feature with real-time pricing and free prescription coupons. Key functionalities include push notifications, interactive map integration using Google Maps, and a clean, intuitive user interface tailored for quick access to care. This project highlights my experience in building platform-specific native apps, integrating maps and location services, and delivering reliable, user-focused healthcare solutions."
     },
     {
-        title: "Fashion Website",
-        description: "Created a styled multi-page website for a new player in the fashion industry and integrated it with a shopping cart, using stripe for payment gateway"
+        title: "Attendance Management System",
+        description: "Attendance Management System is an Android-based application developed using Java and XML that simplifies and digitizes student attendance tracking. The app features three distinct panels: a Teacher panel for taking and managing attendance, a Student panel for viewing attendance records, and an Admin panel to oversee and manage the entire system. Designed for ease of use and scalability, the app ensures accurate data handling and a streamlined experience for educational institutions."
     }
 ];
 
@@ -75,6 +75,7 @@ function initializeProjects() {
             // STEP 7: Create a list item for the description
             const descriptionItem = document.createElement('li');
             descriptionItem.textContent = project.description; // Set the content to project description
+            descriptionItem.className = 'text-justify'; // Add the text-justify class for justified text
             
             // STEP 8: Build the project structure by appending elements
             // appendChild adds one element as a child of another

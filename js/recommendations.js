@@ -29,16 +29,16 @@ console.log('Recommendations.js loaded'); // DEBUG LOG
 console.log('Defining initialRecommendations array'); // DEBUG LOG
 const initialRecommendations = [
     {
-        text: "Jane is a very quick learner and quickly grasps key concepts of Web development. She got a great attitude & she is an excellent team player. She has a curious mind and asks the right question. She takes initiative within a team and has potentials to lead the team.",
+        text: "It’s been a pleasure working with Junaed. He’s not only technically proficient but also an excellent communicator who understands project goals clearly. His experience in both Android and iOS development gives him a unique perspective when solving cross-platform challenges. I’d love to collaborate again in the future.",
         name: "David Miller"
     },
     {
-        text: "Working with Jane has been an awesome experience. She is highly knowledgeable and always goes the extra step to make sure everything is right. For any future projects that need her expertise I would definitely want to work with her again.",
+        text: "It’s been a pleasure working with Junaed. He’s not only technically proficient but also an excellent communicator who understands project goals clearly. His experience in both Android and iOS development gives him a unique perspective when solving cross-platform challenges. I’d love to collaborate again in the future",
         name: "Sarah Johnson"
     },
     {
-        text: "I had worked along with Jane during the initial phase of our venture which needed Web development. She is a committed resource who has in depth knowledge about the domain. She will be an asset for any organisation!",
-        name: "Michael Chen"
+        text: "Junaed joined our mobile team at a crucial phase, and his contributions were immediately felt. He quickly took ownership of core features, proactively suggested improvements, and delivered clean, maintainable code. His passion for mobile technology and continuous learning make him a valuable asset to any team.",
+        name: "Md. Rafiq Hassan"
     }
 ];
 console.log('initialRecommendations defined with length:', initialRecommendations.length); // DEBUG LOG
@@ -76,6 +76,8 @@ function initializeRecommendations() {
             // Create blockquote with the message
             const blockquote = document.createElement('blockquote');
             blockquote.textContent = `"${rec.text}"`;
+            blockquote.className = 'text-justify'; // Add the text-justify class for justified text
+            
             
             // Add recommender name if available
             if (rec.name) {
